@@ -17,19 +17,7 @@ export class ExcercisesResolver {
                 { muscle: "Triceps", workload: 60 },],
             workload: 100,
         };
+        
         return res;
     }
 }
-
-// @Resolver(of => WeightedMusclesType)
-// export class WeightedMusclesResolver {
-//   @ResolveField()
-//   muscles(weightedMuscles: WeightedMuscles) {
-//     return weightedMuscles.muscles;
-//   }
-
-//   @ResolveField()
-//   workload(weightedMuscles: WeightedMuscles) {
-//     return weightedMuscles.workload;
-//   }
-// }
