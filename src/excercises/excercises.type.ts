@@ -4,6 +4,10 @@ import { ModelType } from "src/models/models.type";
 
 @ObjectType('Excercise')
 export class ExcerciseType extends ModelType<Excercise> {
+    
+    @Field(type => ID)
+    id: string;
+
     @Field()
     name: string;
 

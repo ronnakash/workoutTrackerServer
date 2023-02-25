@@ -7,6 +7,9 @@ import { ExcerciseType } from "src/excercises/excercises.type";
 @ObjectType('WorkoutExcercise')
 export class WorkoutExcerciseType extends ModelType<WorkoutExcercise> {
 
+    @Field(type => ID)
+    id: string;
+
     @Field(type => ExcerciseType)
     excercise: ExcerciseType;
 
