@@ -3,8 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ExcercisesModule } from './excercises/excercises.module';
-import { ModelsModule } from './models/models.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { WorkoutResolver } from './workout/workout.resolver';
+import { WorkoutModule } from './workout/workout.module';
+import { WorkoutExcerciseModule } from './workout-excercise/workout-excercise.module';
 
 @Module({
   imports: [
@@ -12,10 +14,12 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
       autoSchemaFile: 'schema.gql',
       driver: ApolloDriver,
     }),
-    ExcercisesModule
+    ExcercisesModule,
+    WorkoutModule,
+    WorkoutExcerciseModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, WorkoutResolver],
 })
 export class AppModule implements NestModule{
   configure(consumer: MiddlewareConsumer) {
