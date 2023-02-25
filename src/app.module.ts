@@ -4,11 +4,13 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ExcercisesModule } from './excercises/excercises.module';
 import { ModelsModule } from './models/models.module';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({
-      autoSchemaFile: true,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      autoSchemaFile: 'schema.gql',
+      driver: ApolloDriver,
     }),
     ExcercisesModule
   ],
