@@ -14,8 +14,9 @@ import { WorkoutEntity } from './workout/workout.entity';
 import * as dotenv from "dotenv";
 import * as path from "path";
 
-dotenv.config({ path: path.join(process.cwd(), ".env") });
+dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 
+console.log(process.env.MONGO_URI)
 @Module({
   imports: [
     TypeOrmModule.forRoot({
