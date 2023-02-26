@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Excercise {
+  id: ID!
+  name: String!
+  musclesWorked: [WeightedMuscleType!]!
+  workload: Float!
+}
+
+type WeightedMuscleType {
+  muscle: String!
+  workload: Float!
+}
+
+type WorkoutExcercise {
+  id: ID!
+  excercise: Excercise!
+  reps: Float!
+  sets: Float!
+}
+
+type Workout {
+  id: ID!
+  excercises: WorkoutExcercise!
+}
+
+type Query {
+  Workout: Workout!
+  Excercise: Excercise!
+  WorkoutExcercise: WorkoutExcercise!
+}

@@ -7,7 +7,6 @@ export class ExcercisesResolver {
 
     @Query( returns => ExcerciseType )
     Excercise() {
-
         const res: ExcerciseType = {
             id: '1',
             name: "Bench Press",
@@ -17,7 +16,7 @@ export class ExcercisesResolver {
                 { muscle: "Triceps", workload: 60 },],
             workload: 100,
         };
-        
         return res;
     }
+    
 }

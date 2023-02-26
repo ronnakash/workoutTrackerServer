@@ -8,6 +8,9 @@ import { WorkoutResolver } from './workout/workout.resolver';
 import { WorkoutModule } from './workout/workout.module';
 import { WorkoutExcerciseModule } from './workout-excercise/workout-excercise.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ExcerciseEntity } from './excercises/excercises.entity';
+import { WorkoutExcerciseEntity } from './workout-excercise/workout-excercise.entity';
+import { WorkoutEntity } from './workout/workout.entity';
 
 @Module({
   imports: [
@@ -17,7 +20,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true,
       useUnifiedTopology: true,
       entities: [
-        
+        ExcerciseEntity,
+        WorkoutExcerciseEntity,
+        WorkoutEntity,
       ],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
