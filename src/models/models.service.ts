@@ -5,26 +5,30 @@ import { ModelEntity } from './models.entity';
 import { ExcerciseEntity } from 'src/excercises/excercises.entity';
 
 @Injectable()
-export abstract class ModelsService<M extends ModelBase> {
+export abstract class ModelService<M extends ModelBase> {
     repository!: Repository<ModelEntity<M> >;
-    name!: string;
-    et: EntityTarget<ModelEntity<M> >;
+    // name!: string;
+    // et: EntityTarget<ModelEntity<M> >;
 
-    protected constructor(repository: Repository<ModelEntity<M> >, name: string) {
+    protected constructor(repository: Repository<ModelEntity<M> >) {
         this.repository = repository;
-        this.name = name;
+        // this.name = name;
     }
 
     async getAll() : Promise<ModelEntity<M> []> {
         return await this.repository.find();
     }
 
-    getAllBy(model: M): Promise<ModelEntity<M>[]> {
-        return this.repository.find({where: {...model}});
+    async getAllBy(model: M): Promise<ModelEntity<M>[]> {
+        return await this.repository.find({where: {...model}});
     }
 
-    async getById(id : string) : Promise<ModelEntity<M>> {
-        return await this.repository.findOneById(id)
+    async getOneById(id : string) : Promise<ModelEntity<M>> {
+        return await this.repository.findOne({where: {_id: id}});
+    }
+
+    async getOneBy(model: M) : Promise<ModelEntity<M>> {
+        return await this.repository.findOne({where: {...model}});
     }
 
     async createModel(model: M): Promise<ModelEntity<M>> {
