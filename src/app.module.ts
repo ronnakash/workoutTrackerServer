@@ -11,6 +11,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ExcerciseEntity } from './excercises/excercises.entity';
 import { WorkoutExcerciseEntity } from './workout-excercise/workout-excercise.entity';
 import { WorkoutEntity } from './workout/workout.entity';
+import * as dotenv from "dotenv";
+import * as path from "path";
+
+dotenv.config({ path: path.join(process.cwd(), ".env") });
 
 @Module({
   imports: [
