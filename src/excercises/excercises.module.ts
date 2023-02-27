@@ -8,13 +8,16 @@ import { ExcerciseEntity } from './excercises.entity';
 
 
 @Module({
-  // imports: [
-  //   TypeOrmModule.forFeature([ExcerciseEntity]),
-  // ],
+  imports: [
+    TypeOrmModule.forFeature([ExcerciseEntity]),
+  ],
   providers: [
     ExcercisesService,
     ExcercisesResolver,
-]
+],
+  exports: [
+    TypeOrmModule,
+],
 })
 export class ExcercisesModule extends ModelsModule<Excercise> {
     configure(consumer: MiddlewareConsumer) {

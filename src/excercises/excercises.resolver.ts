@@ -1,20 +1,20 @@
 import { Query, ResolveField, Resolver } from "@nestjs/graphql";
 import { ExcerciseType, WeightedMuscleType } from "./excercises.type";
 import { Excercise, Muscle, WeightedMuscle } from "./excercises.interfaces";
-import { ModelsResolver } from "src/models/models.resolver";
+import { ModelsResolver } from "../models/models.resolver";
 import { ExcerciseEntity } from "./excercises.entity";
 import { ExcercisesService } from "./excercises.service";
-// import { IModelService } from "src/models/models.service";
-import { ModelType } from "src/models/models.type";
+// import { IModelService } from "../models/models.service";
+import { ModelType } from "../models/models.type";
 
 @Resolver(of => ExcerciseType)
-export class ExcercisesResolver {
+export class ExcercisesResolver extends ModelsResolver<Excercise>{
     
     
-    // constructor(//@InjectModel("Note") private noteModel : Model<NoteDocument>,
-    //         private excercisesService : ExcercisesService) {
-    //     super(excercisesService)
-    // }
+    public constructor(//@InjectModel("Note") private noteModel : Model<NoteDocument>,
+            private excercisesService : ExcercisesService) {
+        super(excercisesService)
+    }
 
     @Query( returns => ExcerciseType )
     async Excercise() : Promise<ModelType<Excercise>[]>{
