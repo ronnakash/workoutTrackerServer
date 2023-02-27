@@ -14,20 +14,6 @@ type WeightedMuscleType {
   workload: Float!
 }
 
-type WorkoutExcercise {
-  id: ID!
-  excercise: Excercise!
-  reps: Float!
-  sets: Float!
-}
-
-type Workout {
-  id: ID!
-  excercises: WorkoutExcercise!
-}
-
 type Query {
-  Workout: Workout!
   Excercise: Excercise!
-  WorkoutExcercise: WorkoutExcercise!
 }

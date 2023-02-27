@@ -1,7 +1,7 @@
 import { Entity, Column, ObjectIdColumn } from "typeorm";
 import { Excercise, WeightedMuscle } from "./excercises.interfaces";
-import { ModelEntity } from "src/models/models.entity";
-import { ModelType } from "src/models/models.type";
+import { ModelEntity } from "../models/models.entity";
+import { ModelType } from "../models/models.type";
 import { ExcerciseType } from "./excercises.type";
 
 @Entity()
