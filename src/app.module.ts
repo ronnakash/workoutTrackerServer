@@ -20,24 +20,25 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 
 @Module({
   imports: [
-    // TypeOrmModule.forRoot({
-    //   type : 'mongodb',
-    //   url: process.env.MONGO_URI,
-    //   synchronize: true,
-    //   useUnifiedTopology: true,
-    //   entities: [
-    //     ExcerciseEntity,
-    //     // WorkoutExcerciseEntity,
-    //     // WorkoutEntity,
-    //   ],
-    // }),
+    TypeOrmModule.forRoot({
+      type : 'mongodb',
+      url: process.env.MONGO_URI,
+      synchronize: true,
+      useUnifiedTopology: true,
+      authSource: 'admin',
+      entities: [
+        // ExcerciseEntity,
+        // WorkoutExcerciseEntity,
+        // WorkoutEntity,
+      ],
+    }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: 'schema.gql',
       driver: ApolloDriver,
     }),
     ExcercisesModule,
-    // WorkoutModule,
-    // WorkoutExcerciseModule
+    WorkoutModule,
+    WorkoutExcerciseModule
   ],
   controllers: [AppController],
   providers: [
