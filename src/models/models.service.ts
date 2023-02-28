@@ -16,7 +16,7 @@ export abstract class ModelService<M extends ModelBase> implements IModelService
         return await this.repository.find();
     }
 
-    async getAllBy(model: M): Promise<ModelEntity<M>[]> {
+    async getAllBy(model: Partial<M>): Promise<ModelEntity<M>[]> {
         return await this.repository.find({where: {...model}});
     }
 
@@ -24,7 +24,7 @@ export abstract class ModelService<M extends ModelBase> implements IModelService
         return await this.repository.findOne({where: {_id: id}});
     }
 
-    async getOneBy(model: M) : Promise<ModelEntity<M>> {
+    async getOneBy(model: Partial<M>) : Promise<ModelEntity<M>> {
         return await this.repository.findOne({where: {...model}});
     }
 
@@ -33,7 +33,7 @@ export abstract class ModelService<M extends ModelBase> implements IModelService
         return await this.repository.save(entity);
     }
 
-    async updateModel(model: M): Promise<ModelEntity<M>> {
+    async updateModel(model: Partial<M>): Promise<ModelEntity<M>> {
         await this.repository.update(model._id, {...model});
         return await this.newEntity(model);
     }
@@ -46,7 +46,7 @@ export abstract class ModelService<M extends ModelBase> implements IModelService
         await this.repository.delete(id);
     }
 
-    abstract newEntity(model : M) : ModelEntity<M>;
+    abstract newEntity(model : Partial<M>) : ModelEntity<M>;
 
 }
 

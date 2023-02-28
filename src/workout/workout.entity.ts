@@ -4,7 +4,7 @@ import { WorkoutExcercise } from "../workout-excercise/workout-excercise.interfa
 import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
 
-@Entity()
+@Entity('Workout')
 export class WorkoutEntity extends ModelEntity<Workout> {
 
     public constructor(model? : Workout) {

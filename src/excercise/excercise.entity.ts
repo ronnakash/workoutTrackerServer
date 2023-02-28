@@ -4,7 +4,7 @@ import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
 import { ExcerciseType } from "./excercise.type";
 
-@Entity()
+@Entity('Excercise')
 export class ExcerciseEntity extends ModelEntity<Excercise> {
     
 

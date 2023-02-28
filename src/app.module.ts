@@ -15,6 +15,9 @@ import * as dotenv from "dotenv";
 import * as path from "path";
 import { APP_FILTER } from '@nestjs/core';
 // import { HttpExceptionFilter } from './main';
+import { UserService } from './user/user.service';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
 
 dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 
@@ -39,11 +42,13 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
     }),
     ExcercisesModule,
     WorkoutModule,
-    WorkoutExcerciseModule
+    WorkoutExcerciseModule,
+    AuthModule
   ],
-  controllers: [AppController],
+  controllers: [AppController, AuthController],
   providers: [
     AppService,
+    UserService,
     // {
     //   provide: APP_FILTER,
     //   useClass: HttpExceptionFilter,
