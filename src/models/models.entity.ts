@@ -1,7 +1,7 @@
 import { ObjectIdColumn } from "typeorm";
 import { ModelBase } from "./models.interfaces";
 import { ModelType } from "./models.type";
-import { Excercise } from "src/excercises/excercises.interfaces";
+import { Excercise } from "../excercise/excercise.interfaces";
 
 
 export abstract class ModelEntity<M extends ModelBase> implements ModelBase {

@@ -1,8 +1,8 @@
 import { Entity, Column, ObjectIdColumn } from "typeorm";
-import { Excercise, WeightedMuscle } from "./excercises.interfaces";
+import { Excercise, WeightedMuscle } from "./excercise.interfaces";
 import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
-import { ExcerciseType } from "./excercises.type";
+import { ExcerciseType } from "./excercise.type";
 
 @Entity()
 export class ExcerciseEntity extends ModelEntity<Excercise> {

@@ -1,6 +1,6 @@
 import { Entity, Column, ObjectIdColumn } from "typeorm";
 import { WorkoutExcercise } from "./workout-excercise.interfaces";
-import { Excercise } from "../excercises/excercises.interfaces";
+import { Excercise } from "../excercise/excercise.interfaces";
 import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
 

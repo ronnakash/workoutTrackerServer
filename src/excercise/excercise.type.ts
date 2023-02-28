@@ -1,6 +1,6 @@
 import { ObjectType, Field, ID } from "@nestjs/graphql";
-import { Excercise, Muscle, WeightedMuscle } from "./excercises.interfaces";
-import { ExcerciseEntity } from "./excercises.entity";
+import { Excercise, Muscle, WeightedMuscle } from "./excercise.interfaces";
+import { ExcerciseEntity } from "./excercise.entity";
 import { ModelType } from "../models/models.type";
 
 @ObjectType('Excercise')
