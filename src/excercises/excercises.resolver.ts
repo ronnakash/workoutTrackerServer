@@ -8,7 +8,7 @@ import { ExcercisesService } from "./excercises.service";
 import { ModelType } from "../models/models.type";
 
 @Resolver(of => ExcerciseType)
-export class ExcercisesResolver extends ModelsResolver<Excercise>{
+export class ExcerciseResolver extends ModelsResolver<Excercise>{
     
     public constructor(
             private excercisesService : ExcercisesService) {
@@ -26,11 +26,10 @@ export class ExcercisesResolver extends ModelsResolver<Excercise>{
                 { muscle: "Triceps", workload: 60 },],
             workload: 100,
         };
-        // const temp = await this.service.getAll();
-        // var result = temp.map(e => e.toType());
-        // result.push(res);
-        // return result;
-        return [res];
+        const temp = await this.service.getAll();
+        var result = temp.map(e => e.toType());
+        result.push(res);
+        return result;
     }
     
 }

@@ -1,6 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ExcercisesService } from './excercises.service';
-import { ExcercisesResolver } from './excercises.resolver';
+import { ExcerciseResolver } from './excercises.resolver';
 import { ModelsModule } from '../models/models.module';
 import { Excercise } from './excercises.interfaces';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -13,10 +13,11 @@ import { ExcerciseEntity } from './excercises.entity';
   ],
   providers: [
     ExcercisesService,
-    ExcercisesResolver,
+    ExcerciseResolver,
 ],
   exports: [
     TypeOrmModule,
+    ExcercisesService,
 ],
 })
 export class ExcercisesModule extends ModelsModule<Excercise> {

@@ -25,11 +25,12 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
       url: process.env.MONGO_URI,
       synchronize: true,
       useUnifiedTopology: true,
+      database: "WorkoutTracker",
       authSource: 'admin',
       entities: [
-        // ExcerciseEntity,
-        // WorkoutExcerciseEntity,
-        // WorkoutEntity,
+        ExcerciseEntity,
+        WorkoutExcerciseEntity,
+        WorkoutEntity,
       ],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({

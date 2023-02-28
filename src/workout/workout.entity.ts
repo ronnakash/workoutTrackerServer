@@ -7,9 +7,10 @@ import { ModelType } from "../models/models.type";
 @Entity()
 export class WorkoutEntity extends ModelEntity<Workout> {
 
-    public constructor(model : Workout) {
+    public constructor(model? : Workout) {
         super();
-        this.excercises = model.excercises;
+        if(model)
+            this.excercises = model.excercises;
     }
     // @ObjectIdColumn()
     // _id: string;

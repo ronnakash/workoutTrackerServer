@@ -2,8 +2,8 @@ import jwt, { JwtPayload, VerifyErrors } from 'jsonwebtoken';
 // import config from '../config/config';
 import { Request, Response, NextFunction } from 'express';
 // import AppError from '../utils/AppError';
-import { NestMiddleware } from '@nestjs/common';
-import AppError from 'src/util/app-error';
+import { Injectable, NestMiddleware } from '@nestjs/common';
+import AppError from '../util/app-error';
 import { JWTParams } from './middleware.interfaces';
 
 
@@ -13,6 +13,7 @@ import { JWTParams } from './middleware.interfaces';
  * always called after getJWT
  * 
 */
+@Injectable()
 export class ExistsJWTMiddleware implements NestMiddleware {
     use(req: Request, res: Response, next: NextFunction) {
         // console.log('ExistsJWTMiddleware');
@@ -65,7 +66,7 @@ export class ExistsJWTMiddleware implements NestMiddleware {
  * 
 */
 
-
+@Injectable()
 export class ValidateAdminTokenMiddleware implements NestMiddleware{
     use(req: Request, res: Response, next: NextFunction) {
         // console.log('ValidateAdminTokenMiddleware');
@@ -86,6 +87,7 @@ export class ValidateAdminTokenMiddleware implements NestMiddleware{
  * 
 */
 
+@Injectable()
 export class ValidateUserOrAdminMiddleware implements NestMiddleware{
     use(req: Request, res: Response, next: NextFunction) {
         // console.log('ValidateUserOrAdminMiddleware');

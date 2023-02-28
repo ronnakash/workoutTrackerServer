@@ -21,7 +21,13 @@ type WorkoutExcercise {
   sets: Float!
 }
 
+type Workout {
+  id: ID!
+  excercises: WorkoutExcercise!
+}
+
 type Query {
   Excercise: Excercise!
+  Workout: Workout!
   WorkoutExcercise: WorkoutExcercise!
 }

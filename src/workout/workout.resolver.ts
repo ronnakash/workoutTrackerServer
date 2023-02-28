@@ -5,6 +5,8 @@ import { ModelsResolver } from '../models/models.resolver';
 import { Workout } from './workout.interfaces';
 import { WorkoutService } from './workout.service';
 import { ExcerciseType } from '../excercises/excercises.type';
+import { UseGuards } from '@nestjs/common';
+import { ExistsJWTMiddleware, ValidateUserOrAdminMiddleware } from '../middleware/middleware.functions';
 
 @Resolver(of => WorkoutType)
 export class WorkoutResolver extends ModelsResolver<Workout> {
@@ -15,7 +17,8 @@ export class WorkoutResolver extends ModelsResolver<Workout> {
 }
 
     @Query( returns => WorkoutType )
-    Workout() {
+    @UseGuards(ExistsJWTMiddleware, ValidateUserOrAdminMiddleware)
+    async Workout() {
         const excercise: ExcerciseType = {
             id: '',
             name: "Bench Press",
@@ -37,7 +40,9 @@ export class WorkoutResolver extends ModelsResolver<Workout> {
             id: '2',
             excercises: [WorkoutExcercise]
         };
-        
+        const temp = await this.service.getAll();
+        var result = temp.map(e => e.toType());
+        result.push(res);
         return res;
     }
 }
