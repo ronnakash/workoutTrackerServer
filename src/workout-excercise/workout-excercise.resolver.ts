@@ -2,7 +2,6 @@ import { Query, Resolver } from '@nestjs/graphql';
 import { WorkoutExcerciseType } from './workout-excercise.type';
 import { ExcerciseType } from 'src/excercises/excercises.type';
 
-// @Resolver(of => WorkoutExcerciseType)
 @Resolver()
 export class WorkoutExcerciseResolver {
 
