@@ -6,15 +6,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ExcerciseEntity } from './excercises.entity';
 import { ModelEntity } from '../models/models.entity';
 
-// @Injectable()
-// export class ExcercisesService extends BaseModelService<Excercise>(){
-
-//     newEntity(model: Excercise): ModelEntity<Excercise> {
-//         return new ExcerciseEntity(model);
-//     }
-
-// }
-
 
 
 @Injectable()

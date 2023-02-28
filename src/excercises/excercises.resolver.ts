@@ -10,8 +10,7 @@ import { ModelType } from "../models/models.type";
 @Resolver(of => ExcerciseType)
 export class ExcercisesResolver extends ModelsResolver<Excercise>{
     
-    
-    public constructor(//@InjectModel("Note") private noteModel : Model<NoteDocument>,
+    public constructor(
             private excercisesService : ExcercisesService) {
         super(excercisesService)
     }

@@ -7,7 +7,6 @@ import { IModelService } from './models.service';
 export abstract class ModelsResolver<M extends ModelBase> {
     service : IModelService<M>;
 
-
     protected constructor(service : IModelService<M>) {
         this.service = service;
     }

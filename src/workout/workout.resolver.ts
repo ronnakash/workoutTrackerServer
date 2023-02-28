@@ -1,10 +1,18 @@
 import { Query, Resolver } from '@nestjs/graphql';
 import { WorkoutType } from './workout.type';
-import { WorkoutExcerciseType } from 'src/workout-excercise/workout-excercise.type';
-import { ExcerciseType } from 'src/excercises/excercises.type';
+import { WorkoutExcerciseType } from '../workout-excercise/workout-excercise.type';
+import { ModelsResolver } from '../models/models.resolver';
+import { Workout } from './workout.interfaces';
+import { WorkoutService } from './workout.service';
+import { ExcerciseType } from '../excercises/excercises.type';
 
 @Resolver(of => WorkoutType)
-export class WorkoutResolver {
+export class WorkoutResolver extends ModelsResolver<Workout> {
+
+    public constructor(
+        private excercisesService : WorkoutService) {
+    super(excercisesService)
+}
 
     @Query( returns => WorkoutType )
     Workout() {
