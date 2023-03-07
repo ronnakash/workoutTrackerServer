@@ -6,6 +6,7 @@ import { UserService } from '../user/user.service';
 import { UserType } from '../user/user.type';
 import { UserEntity } from '../user/user.entity';
 import { UserProps } from '../user/user.interfaces';
+import config from 'src/config/config';
 // import {googleTokenUri, googleLoginConfig} from '../config/secret';
 
 
@@ -71,7 +72,7 @@ export class AuthService {
     }
 
     async getGoogleTokens(code : any) : Promise<{access_token: any; id_token: any;}> {
-        const config = googleLoginConfig;
+        const googleconfig = config.google.googleLoginConfig;
         const transformer = (res : any) => {
             let response = JSON.parse(res);
             let {access_token, id_token} = response;
@@ -79,14 +80,14 @@ export class AuthService {
         };
         const googleCodeExchangeRequest = axios.create({
             method: 'POST',
-            baseURL: googleTokenUri,
+            baseURL: config.google.googleTokenUri,
             transformResponse: [transformer],
             timeout: 5000
         });
         const googleResponse = await googleCodeExchangeRequest
             .post('', {
                 code,
-                ...config
+                ...googleconfig
             }).catch(err => {console.log(err)});
         return googleResponse? googleResponse.data : {};
     }
