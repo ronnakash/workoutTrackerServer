@@ -45,7 +45,7 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
     WorkoutExcerciseModule,
     AuthModule
   ],
-  controllers: [AppController, AuthController],
+  controllers: [AppController],
   providers: [
     AppService,
     UserService,

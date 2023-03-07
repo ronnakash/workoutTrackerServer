@@ -1,5 +1,5 @@
-import { Excercise } from "src/excercise/excercises.interfaces";
-import { ModelBase } from "src/models/models.interfaces";
+import { Excercise } from "../excercise/excercise.interfaces";
+import { ModelBase } from "../models/models.interfaces";
 
 export interface WorkoutExcercise extends ModelBase {
     excercise: Excercise;

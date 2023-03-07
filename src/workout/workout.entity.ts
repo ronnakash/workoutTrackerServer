@@ -3,8 +3,9 @@ import { Workout } from "./workout.interfaces";
 import { WorkoutExcercise } from "../workout-excercise/workout-excercise.interfaces";
 import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
+import { WorkoutType } from "./workout.type";
 
-@Entity('Workout')
+@Entity('workout', { name: 'WorkoutTracker' })
 export class WorkoutEntity extends ModelEntity<Workout> {
 
     public constructor(model? : Workout) {
@@ -19,7 +20,7 @@ export class WorkoutEntity extends ModelEntity<Workout> {
     excercises: WorkoutExcercise[];
 
     toType(): ModelType<Workout> {
-        throw new Error("Method not implemented.");
+        return new WorkoutType(this);
     }
 
 }

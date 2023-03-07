@@ -41,8 +41,10 @@ export class WorkoutResolver extends ModelsResolver<Workout> {
             excercises: [WorkoutExcercise]
         };
         const temp = await this.service.getAll();
-        var result = temp.map(e => e.toType());
+        // console.log(`got ${temp.length} results`)
+        // temp.forEach(e => console.log(e))
+        let result = temp.map(e => e.toType());
         result.push(res);
-        return res;
+        return result;
     }
 }

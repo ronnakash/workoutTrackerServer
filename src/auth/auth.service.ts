@@ -6,7 +6,7 @@ import { UserService } from '../user/user.service';
 import { UserType } from '../user/user.type';
 import { UserEntity } from '../user/user.entity';
 import { UserProps } from '../user/user.interfaces';
-import config from 'src/config/config';
+import config from '../config/config';
 // import {googleTokenUri, googleLoginConfig} from '../config/secret';
 
 
