@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { ModelService } from 'src/models/models.service';
+import { ModelService } from '../models/models.service';
 import { User } from './user.interfaces';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from './user.entity';
 import { Repository } from 'typeorm';
-import { ModelEntity } from 'src/models/models.entity';
+import { ModelEntity } from '../models/models.entity';
 
 @Injectable()
 export class UserService extends ModelService<User>{

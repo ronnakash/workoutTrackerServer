@@ -1,7 +1,7 @@
-import { ModelEntity } from "src/models/models.entity";
+import { ModelEntity } from "../models/models.entity";
 import { User } from "./user.interfaces";
 import { Column, Entity, PrimaryColumn } from "typeorm";
-import { ModelType } from "src/models/models.type";
+import { ModelType } from "../models/models.type";
 import { UserType } from "./user.type";
 
 @Entity('User')

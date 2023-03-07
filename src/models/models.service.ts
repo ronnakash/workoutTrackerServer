@@ -28,7 +28,7 @@ export abstract class ModelService<M extends ModelBase> implements IModelService
         return await this.repository.findOne({where: {...model}});
     }
 
-    async createModel(model: M): Promise<ModelEntity<M>> {
+    async createModel(model: Partial<M>): Promise<ModelEntity<M>> {
         const entity : ModelEntity<M> = await this.newEntity(model);
         return await this.repository.save(entity);
     }

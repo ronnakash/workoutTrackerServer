@@ -6,6 +6,7 @@ import AppError from '../util/app-error';
 import { AuthService } from './auth.service';
 import { UserLoginProps, UserProps, UserRegisterProps } from '../user/user.interfaces';
 import { UserService } from '../user/user.service';
+import { UserEntity } from 'src/user/user.entity';
 
 
 @Controller('auth')
@@ -20,7 +21,7 @@ export class AuthController {
         let token = body.token;
         //check if user exists
         let users = await this.usersService
-            .getMany({find: {email}})
+            .getAllBy({email})
             // .catch( error => next(error));
         if (users && users.length > 0)
             throw new AppError(`User already exists: ${users[0]}`,400);
@@ -40,7 +41,7 @@ export class AuthController {
             permissions
         };
         //save user
-        const user = await this.usersService.newUser(userProps);
+        const user = await this.usersService.createModel(userProps) as UserEntity;
         //make jwt
         const newToken = await this.authService.safeLogin(user);
             // .catch( error => next(error));
@@ -58,7 +59,7 @@ export class AuthController {
     async login(@Body() body : UserLoginProps) {
         let { username, email, password } = body;
         const user = await this.usersService
-            .getOne({find: {username: username, email: email}, select: '+password'})
+            .getOneBy({username, email}) as UserEntity
             // .catch( error => next(error));
         if (user && password){
             if (!await bcryptjs.compare(password, user.password))

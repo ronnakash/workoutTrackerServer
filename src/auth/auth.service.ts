@@ -30,7 +30,7 @@ export class AuthService {
         let users = await this.usersService
             .getAllBy({email: email});
         if (users && users.length > 0){
-            let user = users[0];
+            let user = users[0] as UserEntity;
             if (!user.googleLogin){
                 user.googleLogin = true;
                 user.picture = picture;
@@ -45,7 +45,7 @@ export class AuthService {
             picture,
             googleLogin: true,
         };
-        return await this.usersService.newUser(userProps)
+        return await this.usersService.createModel(userProps)
     }
 
 

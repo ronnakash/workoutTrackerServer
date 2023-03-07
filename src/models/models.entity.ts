@@ -4,7 +4,7 @@ import { ModelType } from "./models.type";
 import { Excercise } from "../excercise/excercise.interfaces";
 
 
-export abstract class ModelEntity<M extends ModelBase> implements ModelBase {
+export abstract class ModelEntity<M extends ModelBase> {
 
     protected constructor() {
     }
