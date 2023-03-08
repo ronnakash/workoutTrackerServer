@@ -10,12 +10,12 @@ export class WorkoutType extends ModelType<Workout> {
 
     constructor(workoutEntity: WorkoutEntity) {
         super();
-        this.id = workoutEntity._id;
+        this._id = workoutEntity._id;
         this.excercises = workoutEntity.excercises?.map(e => new WorkoutExcerciseType(new WorkoutExcerciseEntity(e)));
     }
 
     @Field(type => ID)
-    id: string;
+    _id: string;
 
     @Field(type => WorkoutExcerciseType)
     excercises: WorkoutExcerciseType[];

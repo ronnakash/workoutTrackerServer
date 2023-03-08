@@ -22,12 +22,12 @@ type WorkoutExcercise {
 }
 
 type Workout {
-  id: ID!
+  _id: ID!
   excercises: WorkoutExcercise!
 }
 
 type Query {
   Excercise: Excercise!
-  Workout: Workout!
+  Workout: [Workout!]!
   WorkoutExcercise: WorkoutExcercise!
 }

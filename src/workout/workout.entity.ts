@@ -10,11 +10,12 @@ export class WorkoutEntity extends ModelEntity<Workout> {
 
     public constructor(model? : Workout) {
         super();
-        if(model)
+        if(model){
+            this._id = model._id;
             this.excercises = model.excercises;
+        }
     }
-    // @ObjectIdColumn()
-    // _id: string;
+
 
     @Column()
     excercises: WorkoutExcercise[];
