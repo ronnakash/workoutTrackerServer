@@ -8,16 +8,28 @@ import { WorkoutExcerciseEntity } from "../workout-excercise/workout-excercise.e
 @ObjectType('Workout')
 export class WorkoutType extends ModelType<Workout> {
 
-    constructor(workoutEntity: WorkoutEntity) {
+    constructor(workoutEntity: WorkoutEntity);
+    constructor(workout: Workout);
+
+    constructor(workoutEntity?: WorkoutEntity, workout?: Workout) {
         super();
-        this._id = workoutEntity._id;
-        this.excercises = workoutEntity.excercises?.map(e => new WorkoutExcerciseType(new WorkoutExcerciseEntity(e)));
+        if (workoutEntity){
+            this._id = workoutEntity._id;
+            this.excercises = workoutEntity.excercises?.map((e : WorkoutExcerciseEntity) => {
+                // console.log(typeof e);
+                return new WorkoutExcerciseType(e);
+            });    
+        }
+        else if (workout) {
+            this._id = workout._id;
+            this.excercises = workout.excercises?.map(e => new WorkoutExcerciseType(e));    
+        }
     }
 
     @Field(type => ID)
     _id: string;
 
-    @Field(type => WorkoutExcerciseType)
+    @Field(type => [WorkoutExcerciseType])
     excercises: WorkoutExcerciseType[];
 
 }

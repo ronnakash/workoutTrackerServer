@@ -7,8 +7,9 @@ export class WorkoutExcerciseResolver {
 
     @Query( returns => WorkoutExcerciseType )
     WorkoutExcercise() {
+        console.log("\n\nWorkoutExcerciseResolver\n\n")
         const excercise: ExcerciseType = {
-            id: '1',
+            _id: '1',
             name: "Bench Press",
             musclesWorked: [
                 { muscle: "Chest", workload: 100 },
@@ -18,7 +19,7 @@ export class WorkoutExcerciseResolver {
         };
 
         const WorkoutExcercise: WorkoutExcerciseType = {
-            id: '1',
+            _id: '1',
             excercise: excercise,
             reps: 6, 
             sets: 4,

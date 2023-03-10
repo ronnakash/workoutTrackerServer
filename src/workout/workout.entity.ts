@@ -4,6 +4,7 @@ import { WorkoutExcercise } from "../workout-excercise/workout-excercise.interfa
 import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
 import { WorkoutType } from "./workout.type";
+import { WorkoutExcerciseEntity } from "../workout-excercise/workout-excercise.entity";
 
 @Entity('workout', { name: 'WorkoutTracker' })
 export class WorkoutEntity extends ModelEntity<Workout> {
@@ -12,13 +13,13 @@ export class WorkoutEntity extends ModelEntity<Workout> {
         super();
         if(model){
             this._id = model._id;
-            this.excercises = model.excercises;
+            this.excercises = model.excercises.map(e => new WorkoutExcerciseEntity(e));
         }
     }
 
 
     @Column()
-    excercises: WorkoutExcercise[];
+    excercises: WorkoutExcerciseEntity[];
 
     toType(): ModelType<Workout> {
         return new WorkoutType(this);

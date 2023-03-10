@@ -5,17 +5,26 @@ import { ModelType } from "../models/models.type";
 
 @ObjectType('Excercise')
 export class ExcerciseType extends ModelType<Excercise> {
-    
-    constructor(excerciseEntity: ExcerciseEntity) {
+
+    constructor(excerciseEntity : ExcerciseEntity);
+    constructor(excercise : Excercise);
+
+
+    constructor(excerciseEntity? : ExcerciseEntity, excercise? : Excercise) {
         super();
-        this.id = excerciseEntity._id;
-        this.name = excerciseEntity.name;
-        this.musclesWorked = excerciseEntity.musclesWorked;
-        this.workload = excerciseEntity.workload;
+        let e : Excercise;
+        if (excerciseEntity)
+            e = excerciseEntity;
+        else 
+            e = excercise;
+        this._id = e._id;
+        this.name = e.name;
+        this.musclesWorked = e.musclesWorked;
+        this.workload = e.workload;    
     }
 
     @Field(type => ID)
-    id: string;
+    _id: string;
 
     @Field()
     name: string;

@@ -16,8 +16,9 @@ export class ExcerciseResolver extends ModelsResolver<Excercise>{
 
     @Query( returns => ExcerciseType )
     async Excercise() : Promise<ModelType<Excercise>[]>{
+        console.log("\n\nExcerciseResolver\n\n")
         const res: ExcerciseType = {
-            id: '1',
+            _id: '1',
             name: "Bench Press",
             musclesWorked: [
                 { muscle: "Chest", workload: 100 },

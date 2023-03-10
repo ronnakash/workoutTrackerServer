@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type Excercise {
-  id: ID!
+  _id: ID!
   name: String!
   musclesWorked: [WeightedMuscleType!]!
   workload: Float!
@@ -15,7 +15,7 @@ type WeightedMuscleType {
 }
 
 type WorkoutExcercise {
-  id: ID!
+  _id: ID!
   excercise: Excercise!
   reps: Float!
   sets: Float!
@@ -23,11 +23,11 @@ type WorkoutExcercise {
 
 type Workout {
   _id: ID!
-  excercises: WorkoutExcercise!
+  excercises: [WorkoutExcercise!]!
 }
 
 type Query {
   Excercise: Excercise!
-  Workout: [Workout!]!
+  Workouts: [Workout!]!
   WorkoutExcercise: WorkoutExcercise!
 }

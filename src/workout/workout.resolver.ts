@@ -20,34 +20,14 @@ export class WorkoutResolver extends ModelsResolver<Workout> {
 
     @Query( returns => [WorkoutType] )
     @UseGuards(ExistsJWTMiddleware, ValidateUserOrAdminMiddleware)
-    async Workout() {
-        const excercise: ExcerciseType = {
-            id: '',
-            name: "Bench Press",
-            musclesWorked: [
-                { muscle: "Chest", workload: 100 },
-                { muscle: "Shoulders", workload: 80 },
-                { muscle: "Triceps", workload: 60 },],
-            workload: 100,
-        };
-
-        const WorkoutExcercise: WorkoutExcerciseType = {
-            id: '1',
-            excercise: excercise,
-            reps: 6, 
-            sets: 4,
-        };
-        // res._id = uuidv4(); // set a unique ID for the new workout
-        const temp = await this.service.getAll();
-        console.log(`got ${temp.length} results`)
-        temp.forEach(e => console.log(e))
-        let result = temp.map(e => e.toType()) as WorkoutType[]; 
-        // result.forEach(e => console.log(e))
-        // result.forEach(e => console.log(typeof e._id))
-        // // const response = result.map(e => {e._id = e._id.toString(); return e;})
-        // result.forEach(e => console.log(e))
-        // result.forEach(e => console.log(typeof e._id))
-        // return response;
+    async Workouts() {
+        console.log("\n\nWorkoutResolver\n\n")
+        const entities = await this.service.getAll() as WorkoutEntity[];
+        console.log('\n\nworkout entities:\n')
+        entities.forEach(e => console.log(e.excercises));
+        let result = entities.map(e => e.toType()) as WorkoutType[];
+        console.log('\n\nworkout types:\n')
+        result.forEach(e => console.log(e.excercises)); 
         return result;
     }
 }
