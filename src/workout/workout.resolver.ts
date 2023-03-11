@@ -15,19 +15,12 @@ export class WorkoutResolver extends ModelsResolver<Workout> {
 
     public constructor(
         private excercisesService : WorkoutService) {
-    super(excercisesService)
-}
+            super(excercisesService)
+    }
 
     @Query( returns => [WorkoutType] )
     @UseGuards(ExistsJWTMiddleware, ValidateUserOrAdminMiddleware)
     async Workouts() {
-        console.log("\n\nWorkoutResolver\n\n")
-        const entities = await this.service.getAll() as WorkoutEntity[];
-        console.log('\n\nworkout entities:\n')
-        entities.forEach(e => console.log(e.excercises));
-        let result = entities.map(e => e.toType()) as WorkoutType[];
-        console.log('\n\nworkout types:\n')
-        result.forEach(e => console.log(e.excercises)); 
-        return result;
+        return await this.getAll();
     }
 }

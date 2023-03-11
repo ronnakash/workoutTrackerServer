@@ -3,8 +3,9 @@ import { Excercise, WeightedMuscle } from "./excercise.interfaces";
 import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
 import { ExcerciseType } from "./excercise.type";
+import { isNullableType } from "graphql";
 
-@Entity('Excercise')
+@Entity('excercise', { name: 'WorkoutTracker' })
 export class ExcerciseEntity extends ModelEntity<Excercise> {
     
 
@@ -26,7 +27,7 @@ export class ExcerciseEntity extends ModelEntity<Excercise> {
     @Column()
     workload: number;
 
-    @Column({ type: 'jsonb', array: false })
+    @Column({ type: 'jsonb', array: false, nullable: true })
     musclesWorked: WeightedMuscle[];
 
     toType(): ModelType<Excercise> {

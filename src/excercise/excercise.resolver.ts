@@ -14,22 +14,9 @@ export class ExcerciseResolver extends ModelsResolver<Excercise>{
         super(excercisesService)
     }
 
-    @Query( returns => ExcerciseType )
-    async Excercise() : Promise<ModelType<Excercise>[]>{
-        console.log("\n\nExcerciseResolver\n\n")
-        const res: ExcerciseType = {
-            _id: '1',
-            name: "Bench Press",
-            musclesWorked: [
-                { muscle: "Chest", workload: 100 },
-                { muscle: "Shoulders", workload: 80 },
-                { muscle: "Triceps", workload: 60 },],
-            workload: 100,
-        };
-        const temp = await this.service.getAll();
-        var result = temp.map(e => e.toType());
-        result.push(res);
-        return result;
+    @Query( returns => [ExcerciseType] )
+    async Excercises() : Promise<ModelType<Excercise>[]>{
+        return await this.getAll();
     }
     
 }

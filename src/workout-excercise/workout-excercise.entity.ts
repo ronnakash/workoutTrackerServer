@@ -16,8 +16,7 @@ export class WorkoutExcerciseEntity extends ModelEntity<WorkoutExcercise> {
             this.sets = model.sets;
         }
     }
-    // @ObjectIdColumn()
-    // _id: string;
+
 
     @Column()
     excercise: Excercise;

@@ -27,7 +27,7 @@ type Workout {
 }
 
 type Query {
-  Excercise: Excercise!
+  Excercises: [Excercise!]!
   Workouts: [Workout!]!
-  WorkoutExcercise: WorkoutExcercise!
+  WorkoutExcercises: [WorkoutExcercise!]!
 }
