@@ -1,22 +1,22 @@
 import { ObjectType, Field, ID } from "@nestjs/graphql";
-import { Excercise, Muscle, WeightedMuscle } from "./excercise.interfaces";
-import { ExcerciseEntity } from "./excercise.entity";
+import { Exercise, Muscle, WeightedMuscle } from "./excercise.interfaces";
+import { ExerciseEntity } from "./excercise.entity";
 import { ModelType } from "../models/models.type";
 
 @ObjectType('Excercise')
-export class ExcerciseType extends ModelType<Excercise> {
+export class ExerciseType extends ModelType<Exercise> {
 
-    constructor(excerciseEntity : ExcerciseEntity);
-    constructor(excercise : Excercise);
+    constructor(excerciseEntity : ExerciseEntity);
+    constructor(excercise : Exercise);
 
 
-    constructor(excerciseEntity? : ExcerciseEntity, excercise? : Excercise) {
+    constructor(exerciseEntity? : ExerciseEntity, exercise? : Exercise) {
         super();
-        let e : Excercise;
-        if (excerciseEntity)
-            e = excerciseEntity;
+        let e : Exercise;
+        if (exerciseEntity)
+            e = exerciseEntity;
         else 
-            e = excercise;
+            e = exercise;
         this._id = e._id;
         this.name = e.name;
         this.musclesWorked = e.musclesWorked;

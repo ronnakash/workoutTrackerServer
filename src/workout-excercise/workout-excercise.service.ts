@@ -1,23 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { ModelService } from '../models/models.service';
-import { WorkoutExcercise } from './workout-excercise.interfaces';
+import { WorkoutExercise } from './workout-excercise.interfaces';
 import { InjectRepository } from '@nestjs/typeorm';
-import { WorkoutExcerciseEntity } from './workout-excercise.entity';
+import { WorkoutExerciseEntity } from './workout-excercise.entity';
 import { Repository } from 'typeorm';
 import { ModelEntity } from '../models/models.entity';
 
 
 @Injectable()
-export class WorkoutExcerciseService extends ModelService<WorkoutExcercise>{
+export class WorkoutExerciseService extends ModelService<WorkoutExercise>{
 
-    constructor(@InjectRepository(WorkoutExcerciseEntity) 
-        private exercisesRepository: Repository<WorkoutExcerciseEntity>) {
+    constructor(@InjectRepository(WorkoutExerciseEntity) 
+        private exercisesRepository: Repository<WorkoutExerciseEntity>) {
             super(exercisesRepository);
     }
 
 
-    newEntity(model: WorkoutExcercise): ModelEntity<WorkoutExcercise> {
-        return new WorkoutExcerciseEntity(model);
+    newEntity(model: WorkoutExercise): ModelEntity<WorkoutExercise> {
+        return new WorkoutExerciseEntity(model);
     }
 
 }

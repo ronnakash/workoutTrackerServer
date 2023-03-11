@@ -1,24 +1,24 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import { WorkoutExcerciseResolver } from './workout-excercise.resolver';
-import { WorkoutExcerciseService } from './workout-excercise.service';
+import { WorkoutExerciseResolver } from './workout-excercise.resolver';
+import { WorkoutExerciseService } from './workout-excercise.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { WorkoutExcerciseEntity } from './workout-excercise.entity';
+import { WorkoutExerciseEntity } from './workout-excercise.entity';
 import { ModelsModule } from '../models/models.module';
-import { WorkoutExcercise } from './workout-excercise.interfaces';
+import { WorkoutExercise } from './workout-excercise.interfaces';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([WorkoutExcerciseEntity]),
+    TypeOrmModule.forFeature([WorkoutExerciseEntity]),
   ],
   providers: [
-    WorkoutExcerciseService,
-    WorkoutExcerciseResolver,
+    WorkoutExerciseService,
+    WorkoutExerciseResolver,
 ],
   exports: [
     TypeOrmModule,
 ],
 })
-export class WorkoutExcerciseModule extends ModelsModule<WorkoutExcercise> {
+export class WorkoutExcerciseModule extends ModelsModule<WorkoutExercise> {
     configure(consumer: MiddlewareConsumer) {
     }
   }

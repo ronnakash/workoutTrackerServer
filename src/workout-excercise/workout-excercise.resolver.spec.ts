@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { WorkoutExcerciseResolver } from './workout-excercise.resolver';
+import { WorkoutExerciseResolver } from './workout-excercise.resolver';
 
 describe('WorkoutExcerciseResolver', () => {
-  let resolver: WorkoutExcerciseResolver;
+  let resolver: WorkoutExerciseResolver;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [WorkoutExcerciseResolver],
+      providers: [WorkoutExerciseResolver],
     }).compile();
 
-    resolver = module.get<WorkoutExcerciseResolver>(WorkoutExcerciseResolver);
+    resolver = module.get<WorkoutExerciseResolver>(WorkoutExerciseResolver);
   });
 
   it('should be defined', () => {

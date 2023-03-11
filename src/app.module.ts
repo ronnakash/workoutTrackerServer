@@ -8,8 +8,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { WorkoutModule } from './workout/workout.module';
 import { WorkoutExcerciseModule } from './workout-excercise/workout-excercise.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ExcerciseEntity } from './excercise/excercise.entity';
-import { WorkoutExcerciseEntity } from './workout-excercise/workout-excercise.entity';
+import { ExerciseEntity } from './excercise/excercise.entity';
+import { WorkoutExerciseEntity } from './workout-excercise/workout-excercise.entity';
 import { WorkoutEntity } from './workout/workout.entity';
 import * as dotenv from "dotenv";
 import * as path from "path";
@@ -24,15 +24,20 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type : 'mongodb',
-      url: process.env.MONGO_URI,
+      type : 'mysql',
+      url: process.env.DATABASE_URL,
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
       synchronize: true,
-      useUnifiedTopology: true,
-      database: "WorkoutTracker",
-      authSource: 'admin',
+      // useUnifiedTopology: true,
+      database: "workout_tracker",
+      ssl: {
+        rejectUnauthorized: true,
+      },
+      // authSource: 'admin',
       entities: [
-        ExcerciseEntity,
-        WorkoutExcerciseEntity,
+        ExerciseEntity,
+        WorkoutExerciseEntity,
         WorkoutEntity,
       ],
     }),

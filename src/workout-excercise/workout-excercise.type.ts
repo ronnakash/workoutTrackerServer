@@ -1,37 +1,32 @@
 import { ObjectType, Field, ID } from "@nestjs/graphql";
-import { Excercise } from "../excercise/excercise.interfaces";
+import { Exercise } from "../excercise/excercise.interfaces";
 import { ModelType } from "../models/models.type";
-import { WorkoutExcercise } from "./workout-excercise.interfaces";
-import { ExcerciseType } from "../excercise/excercise.type";
-import { WorkoutExcerciseEntity } from "./workout-excercise.entity";
-import { ExcerciseEntity } from "../excercise/excercise.entity";
+import { WorkoutExercise } from "./workout-excercise.interfaces";
+import { ExerciseType } from "../excercise/excercise.type";
+import { WorkoutExerciseEntity } from "./workout-excercise.entity";
+import { ExerciseEntity } from "../excercise/excercise.entity";
 
 @ObjectType('WorkoutExcercise')
-export class WorkoutExcerciseType extends ModelType<WorkoutExcercise> {
+export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
     
-    constructor(workoutExcerciseEntity: WorkoutExcerciseEntity) 
-    constructor(workoutExcercise?: WorkoutExcercise) 
+    constructor(workoutExerciseEntity: WorkoutExerciseEntity);
+    constructor(workoutExercise: WorkoutExercise);
     
 
-    constructor(workoutExcerciseEntity?: WorkoutExcerciseEntity, workoutExcercise?: WorkoutExcercise) {
+    constructor(workoutExerciseEntityOrExercise: WorkoutExerciseEntity | WorkoutExercise) {
         super();
-        let w;
-        if (workoutExcerciseEntity) 
-            w = workoutExcerciseEntity;
-        else if (workoutExcercise) 
-            w = workoutExcercise;
-        this._id = w._id;
-        this.excercise = new ExcerciseType(w.excercise);
-        this.reps = w.reps;
-        this.sets = w.sets;    
+        this._id = workoutExerciseEntityOrExercise._id;
+        this.exercise = new ExerciseType(workoutExerciseEntityOrExercise.exercise);
+        this.reps = workoutExerciseEntityOrExercise.reps;
+        this.sets = workoutExerciseEntityOrExercise.sets;    
 
     }
 
     @Field(type => ID)
     _id: string;
 
-    @Field(type => ExcerciseType)
-    excercise: ExcerciseType;
+    @Field(type => ExerciseType)
+    exercise: ExerciseType;
 
     @Field(type => Number)
     reps: number;

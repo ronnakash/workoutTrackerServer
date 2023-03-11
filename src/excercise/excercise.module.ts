@@ -2,14 +2,14 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ExcerciseService } from './excercise.service';
 import { ExcerciseResolver } from './excercise.resolver';
 import { ModelsModule } from '../models/models.module';
-import { Excercise } from './excercise.interfaces';
+import { Exercise } from './excercise.interfaces';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ExcerciseEntity } from './excercise.entity';
+import { ExerciseEntity } from './excercise.entity';
 
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([ExcerciseEntity]),
+    TypeOrmModule.forFeature([ExerciseEntity]),
   ],
   providers: [
     ExcerciseService,
@@ -20,7 +20,7 @@ import { ExcerciseEntity } from './excercise.entity';
     ExcerciseService,
 ],
 })
-export class ExcercisesModule extends ModelsModule<Excercise> {
+export class ExcercisesModule extends ModelsModule<Exercise> {
     configure(consumer: MiddlewareConsumer) {
     }
   }

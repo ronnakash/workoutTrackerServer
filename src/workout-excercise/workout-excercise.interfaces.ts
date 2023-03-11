@@ -1,8 +1,8 @@
-import { Excercise } from "../excercise/excercise.interfaces";
+import { Exercise } from "../excercise/excercise.interfaces";
 import { ModelBase } from "../models/models.interfaces";
 
-export interface WorkoutExcercise extends ModelBase {
-    excercise: Excercise;
+export interface WorkoutExercise extends ModelBase {
+    exercise: Exercise;
     reps: number;
     sets: number;
 }

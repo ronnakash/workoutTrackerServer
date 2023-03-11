@@ -1,17 +1,17 @@
 import { Entity, Column, ObjectIdColumn } from "typeorm";
-import { WorkoutExcercise } from "./workout-excercise.interfaces";
-import { Excercise } from "../excercise/excercise.interfaces";
+import { WorkoutExercise } from "./workout-excercise.interfaces";
+import { Exercise } from "../excercise/excercise.interfaces";
 import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
-import { WorkoutExcerciseType } from "./workout-excercise.type";
+import { WorkoutExerciseType } from "./workout-excercise.type";
 
-@Entity()
-export class WorkoutExcerciseEntity extends ModelEntity<WorkoutExcercise> {
+@Entity('workout_exercise', { name: 'workout_tracker' })
+export class WorkoutExerciseEntity extends ModelEntity<WorkoutExercise> {
 
-    public constructor(model? : WorkoutExcercise) {
+    public constructor(model? : WorkoutExercise) {
         super();
         if (model) {
-            this.excercise = model.excercise;
+            this.exercise = model.exercise;
             this.reps = model.reps;
             this.sets = model.sets;
         }
@@ -19,7 +19,7 @@ export class WorkoutExcerciseEntity extends ModelEntity<WorkoutExcercise> {
 
 
     @Column()
-    excercise: Excercise;
+    exercise: Exercise;
 
     @Column()
     reps: number;
@@ -27,8 +27,8 @@ export class WorkoutExcerciseEntity extends ModelEntity<WorkoutExcercise> {
     @Column()
     sets: number;
 
-    toType(): ModelType<WorkoutExcercise> {
-        return new WorkoutExcerciseType(this);
+    toType(): ModelType<WorkoutExercise> {
+        return new WorkoutExerciseType(this);
     }
 
 }

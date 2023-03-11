@@ -1,20 +1,23 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { WorkoutType } from './workout.type';
-import { WorkoutExcerciseType } from '../workout-excercise/workout-excercise.type';
+import { WorkoutExerciseType } from '../workout-excercise/workout-excercise.type';
 import { ModelsResolver } from '../models/models.resolver';
 import { Workout } from './workout.interfaces';
 import { WorkoutService } from './workout.service';
-import { ExcerciseType } from '../excercise/excercise.type';
+import { ExerciseType } from '../excercise/excercise.type';
 import { UseGuards } from '@nestjs/common';
 import { ExistsJWTMiddleware, ValidateUserOrAdminMiddleware } from '../middleware/middleware.functions';
 import { WorkoutEntity } from './workout.entity';
 import { v4 as uuidv4 } from 'uuid';
+import { WorkoutExerciseService } from '../workout-excercise/workout-excercise.service';
 
 @Resolver(of => WorkoutType)
 export class WorkoutResolver extends ModelsResolver<Workout> {
 
     public constructor(
-        private excercisesService : WorkoutService) {
+        private excercisesService : WorkoutService,
+        // private workoutExerciseService : WorkoutExerciseService
+        ) {
             super(excercisesService)
     }
 
@@ -23,4 +26,11 @@ export class WorkoutResolver extends ModelsResolver<Workout> {
     async Workouts() {
         return await this.getAll();
     }
+    
+    // @ResolveField()
+    // async workoutExcercises(@Parent() workout: WorkoutType) {
+    //     const { _id } = workout;
+    //     return await this.workoutExcerciseService.getAllBy({})
+    // }
+
 }
