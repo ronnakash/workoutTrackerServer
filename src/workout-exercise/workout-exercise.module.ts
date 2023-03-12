@@ -1,10 +1,10 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import { WorkoutExerciseResolver } from './workout-excercise.resolver';
-import { WorkoutExerciseService } from './workout-excercise.service';
+import { WorkoutExerciseResolver } from './workout-exercise.resolver';
+import { WorkoutExerciseService } from './workout-exercise.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { WorkoutExerciseEntity } from './workout-excercise.entity';
+import { WorkoutExerciseEntity } from './workout-exercise.entity';
 import { ModelsModule } from '../models/models.module';
-import { WorkoutExercise } from './workout-excercise.interfaces';
+import { WorkoutExercise } from './workout-exercise.interfaces';
 
 @Module({
   imports: [

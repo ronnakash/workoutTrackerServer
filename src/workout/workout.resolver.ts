@@ -1,6 +1,6 @@
 import { Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { WorkoutType } from './workout.type';
-import { WorkoutExerciseType } from '../workout-excercise/workout-excercise.type';
+import { WorkoutExerciseType } from '../workout-exercise/workout-exercise.type';
 import { ModelsResolver } from '../models/models.resolver';
 import { Workout } from './workout.interfaces';
 import { WorkoutService } from './workout.service';
@@ -9,7 +9,7 @@ import { UseGuards } from '@nestjs/common';
 import { ExistsJWTMiddleware, ValidateUserOrAdminMiddleware } from '../middleware/middleware.functions';
 import { WorkoutEntity } from './workout.entity';
 import { v4 as uuidv4 } from 'uuid';
-import { WorkoutExerciseService } from '../workout-excercise/workout-excercise.service';
+import { WorkoutExerciseService } from '../workout-exercise/workout-exercise.service';
 
 @Resolver(of => WorkoutType)
 export class WorkoutResolver extends ModelsResolver<Workout> {

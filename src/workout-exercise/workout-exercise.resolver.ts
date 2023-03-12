@@ -1,8 +1,8 @@
 import { Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { WorkoutExerciseType } from './workout-excercise.type';
+import { WorkoutExerciseType } from './workout-exercise.type';
 import { ModelsResolver } from '../models/models.resolver';
-import { WorkoutExercise } from './workout-excercise.interfaces';
-import { WorkoutExerciseService } from './workout-excercise.service';
+import { WorkoutExercise } from './workout-exercise.interfaces';
+import { WorkoutExerciseService } from './workout-exercise.service';
 import { WorkoutType } from '../workout/workout.type';
 
 @Resolver()

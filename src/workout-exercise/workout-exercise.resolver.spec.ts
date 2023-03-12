@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { WorkoutExerciseResolver } from './workout-excercise.resolver';
+import { WorkoutExerciseResolver } from './workout-exercise.resolver';
 
 describe('WorkoutExcerciseResolver', () => {
   let resolver: WorkoutExerciseResolver;

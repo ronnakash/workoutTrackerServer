@@ -1,9 +1,9 @@
 import { Entity, Column, ObjectIdColumn, JoinColumn, ManyToOne } from "typeorm";
-import { WorkoutExercise } from "./workout-excercise.interfaces";
+import { WorkoutExercise } from "./workout-exercise.interfaces";
 import { Exercise } from "../exercise/exercise.interfaces";
 import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
-import { WorkoutExerciseType } from "./workout-excercise.type";
+import { WorkoutExerciseType } from "./workout-exercise.type";
 import { WorkoutEntity } from "../workout/workout.entity";
 import { ExerciseEntity } from "../exercise/exercise.entity";
 
