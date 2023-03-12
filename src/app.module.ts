@@ -2,13 +2,13 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ExcercisesModule } from './excercise/excercise.module';
+import { ExcercisesModule } from './exercise/exercise.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 // import { WorkoutResolver } from './workout/workout.resolver';
 import { WorkoutModule } from './workout/workout.module';
 import { WorkoutExcerciseModule } from './workout-excercise/workout-excercise.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ExerciseEntity } from './excercise/excercise.entity';
+import { ExerciseEntity } from './exercise/exercise.entity';
 import { WorkoutExerciseEntity } from './workout-excercise/workout-excercise.entity';
 import { WorkoutEntity } from './workout/workout.entity';
 import * as dotenv from "dotenv";
@@ -24,16 +24,16 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type : 'mysql',
-      url: process.env.DATABASE_URL,
-      username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD,
+      type : 'postgres',
+      url: process.env.SUPABASE_URL,
+      username: process.env.SUPABASE_USERNAME,
+      password: process.env.SUPABASE_PASSWORD,
       synchronize: true,
       // useUnifiedTopology: true,
-      database: "workout_tracker",
-      ssl: {
-        rejectUnauthorized: true,
-      },
+      database: "postgres",
+      // ssl: {
+      //   rejectUnauthorized: true,
+      // },
       // authSource: 'admin',
       entities: [
         ExerciseEntity,

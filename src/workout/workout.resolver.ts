@@ -4,7 +4,7 @@ import { WorkoutExerciseType } from '../workout-excercise/workout-excercise.type
 import { ModelsResolver } from '../models/models.resolver';
 import { Workout } from './workout.interfaces';
 import { WorkoutService } from './workout.service';
-import { ExerciseType } from '../excercise/excercise.type';
+import { ExerciseType } from '../exercise/exercise.type';
 import { UseGuards } from '@nestjs/common';
 import { ExistsJWTMiddleware, ValidateUserOrAdminMiddleware } from '../middleware/middleware.functions';
 import { WorkoutEntity } from './workout.entity';

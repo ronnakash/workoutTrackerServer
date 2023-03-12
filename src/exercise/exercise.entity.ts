@@ -1,11 +1,11 @@
 import { Entity, Column, ObjectIdColumn } from "typeorm";
-import { Exercise, WeightedMuscle } from "./excercise.interfaces";
+import { Exercise, WeightedMuscle } from "./exercise.interfaces";
 import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
-import { ExerciseType } from "./excercise.type";
+import { ExerciseType } from "./exercise.type";
 import { isNullableType } from "graphql";
 
-@Entity('exercise', { name: 'WorkoutTracker' })
+@Entity('exercise', { name: 'postgres' })
 export class ExerciseEntity extends ModelEntity<Exercise> {
     
 
@@ -14,7 +14,7 @@ export class ExerciseEntity extends ModelEntity<Exercise> {
         if (model){
             this.name = model.name;
             this.workload = model.workload;
-            this.musclesWorked = model.musclesWorked;
+            // this.musclesWorked = model.musclesWorked;
         }
     }
     
@@ -27,8 +27,8 @@ export class ExerciseEntity extends ModelEntity<Exercise> {
     @Column()
     workload: number;
 
-    @Column({ type: 'json', array: false, nullable: true })
-    musclesWorked: WeightedMuscle[];
+    // @Column({ type: 'json', array: false, nullable: true })
+    // musclesWorked: WeightedMuscle[];
 
     toType(): ModelType<Exercise> {
         return new ExerciseType(this);

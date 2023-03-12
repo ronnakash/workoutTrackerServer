@@ -16,7 +16,7 @@ type WeightedMuscleType {
 
 type WorkoutExcercise {
   _id: ID!
-  excercise: Excercise!
+  exercise: Excercise!
   reps: Float!
   sets: Float!
 }

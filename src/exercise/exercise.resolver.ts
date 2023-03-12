@@ -1,16 +1,16 @@
 import { Query, ResolveField, Resolver } from "@nestjs/graphql";
-import { ExerciseType, WeightedMuscleType } from "./excercise.type";
-import { Exercise, Muscle, WeightedMuscle } from "./excercise.interfaces";
+import { ExerciseType, WeightedMuscleType } from "./exercise.type";
+import { Exercise, Muscle, WeightedMuscle } from "./exercise.interfaces";
 import { ModelsResolver } from "../models/models.resolver";
-import { ExerciseEntity } from "./excercise.entity";
-import { ExcerciseService } from "./excercise.service";
+import { ExerciseEntity } from "./exercise.entity";
+import { ExerciseService } from "./exercise.service";
 import { ModelType } from "../models/models.type";
 
 @Resolver(of => ExerciseType)
-export class ExcerciseResolver extends ModelsResolver<Exercise>{
+export class ExerciseResolver extends ModelsResolver<Exercise>{
     
     public constructor(
-            private excercisesService : ExcerciseService) {
+            private excercisesService : ExerciseService) {
         super(excercisesService)
     }
 
