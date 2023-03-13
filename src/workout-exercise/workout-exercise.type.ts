@@ -15,7 +15,7 @@ export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
 
     constructor(workoutExercise: WorkoutExerciseEntity | WorkoutExercise) {
         super();
-        this._id = workoutExercise._id;
+        // this._id = workoutExercise._id;
         this.exercise = new ExerciseType(workoutExercise.exercise);
         this.reps = workoutExercise.reps;
         // this.sets = workoutExerciseEntityOrExercise.sets;    

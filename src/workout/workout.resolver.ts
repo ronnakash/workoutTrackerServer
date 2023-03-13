@@ -9,14 +9,12 @@ import { UseGuards } from '@nestjs/common';
 import { ExistsJWTMiddleware, ValidateUserOrAdminMiddleware } from '../middleware/middleware.functions';
 import { WorkoutEntity } from './workout.entity';
 import { v4 as uuidv4 } from 'uuid';
-import { WorkoutExerciseService } from '../workout-exercise/workout-exercise.service';
 
 @Resolver(of => WorkoutType)
 export class WorkoutResolver extends ModelsResolver<Workout> {
 
     public constructor(
         private excercisesService : WorkoutService,
-        // private workoutExerciseService : WorkoutExerciseService
         ) {
             super(excercisesService)
     }

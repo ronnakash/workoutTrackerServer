@@ -6,7 +6,7 @@ import { ExcercisesModule } from './exercise/exercise.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 // import { WorkoutResolver } from './workout/workout.resolver';
 import { WorkoutModule } from './workout/workout.module';
-import { WorkoutExcerciseModule } from './workout-exercise/workout-exercise.module';
+// import { WorkoutExcerciseModule } from './workout-exercise/workout-exercise.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ExerciseEntity } from './exercise/exercise.entity';
 import { WorkoutExerciseEntity } from './workout-exercise/workout-exercise.entity';
@@ -49,7 +49,7 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
     }),
     ExcercisesModule,
     WorkoutModule,
-    WorkoutExcerciseModule,
+    // WorkoutExcerciseModule,
     AuthModule
   ],
   controllers: [AppController],

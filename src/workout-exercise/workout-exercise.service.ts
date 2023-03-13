@@ -7,17 +7,17 @@ import { Repository } from 'typeorm';
 import { ModelEntity } from '../models/models.entity';
 
 
-@Injectable()
-export class WorkoutExerciseService extends ModelService<WorkoutExercise>{
+// @Injectable()
+// export class WorkoutExerciseService extends ModelService<WorkoutExercise>{
 
-    constructor(@InjectRepository(WorkoutExerciseEntity) 
-        private exercisesRepository: Repository<WorkoutExerciseEntity>) {
-            super(exercisesRepository);
-    }
+//     constructor(@InjectRepository(WorkoutExerciseEntity) 
+//         private exercisesRepository: Repository<WorkoutExerciseEntity>) {
+//             super(exercisesRepository);
+//     }
 
 
-    newEntity(model: WorkoutExercise): ModelEntity<WorkoutExercise> {
-        return new WorkoutExerciseEntity(model);
-    }
+//     newEntity(model: WorkoutExercise): ModelEntity<WorkoutExercise> {
+//         return new WorkoutExerciseEntity(model);
+//     }
 
-}
+// }

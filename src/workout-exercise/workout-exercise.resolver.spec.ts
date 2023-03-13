@@ -1,18 +1,18 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { WorkoutExerciseResolver } from './workout-exercise.resolver';
+// import { Test, TestingModule } from '@nestjs/testing';
+// import { WorkoutExerciseResolver } from './workout-exercise.resolver';
 
-describe('WorkoutExcerciseResolver', () => {
-  let resolver: WorkoutExerciseResolver;
+// describe('WorkoutExcerciseResolver', () => {
+//   let resolver: WorkoutExerciseResolver;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [WorkoutExerciseResolver],
-    }).compile();
+//   beforeEach(async () => {
+//     const module: TestingModule = await Test.createTestingModule({
+//       providers: [WorkoutExerciseResolver],
+//     }).compile();
 
-    resolver = module.get<WorkoutExerciseResolver>(WorkoutExerciseResolver);
-  });
+//     resolver = module.get<WorkoutExerciseResolver>(WorkoutExerciseResolver);
+//   });
 
-  it('should be defined', () => {
-    expect(resolver).toBeDefined();
-  });
-});
+//   it('should be defined', () => {
+//     expect(resolver).toBeDefined();
+//   });
+// });

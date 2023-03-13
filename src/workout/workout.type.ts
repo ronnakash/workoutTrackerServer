@@ -15,13 +15,13 @@ export class WorkoutType extends ModelType<Workout> {
     constructor(workout: Workout | WorkoutEntity) {
         super();
         this._id = workout._id;
-        this.excercises = workout.exercises?.map( (e : WorkoutExerciseEntity | WorkoutExercise )=> new WorkoutExerciseType(e));    
+        this.exercises = workout.exercises?.map( (e : WorkoutExerciseEntity | WorkoutExercise )=> new WorkoutExerciseType(e));    
     }
 
     @Field(type => ID)
     _id: string;
 
-    @Field(type => [WorkoutExerciseType])
-    excercises: WorkoutExerciseType[];
+    @Field(type => [WorkoutExerciseType], {nullable: true})
+    exercises: WorkoutExerciseType[];
 
 }
