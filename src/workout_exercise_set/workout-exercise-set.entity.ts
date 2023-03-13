@@ -1,18 +1,17 @@
-import { Entity, Column, ObjectIdColumn, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Entity, Column, ObjectIdColumn, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.entity";
 
 @Entity('workout_exercise_set', { name: 'postgres' })
 export class WorkoutExerciseSetEntity {
 
     @ManyToOne(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.sets)
-    @JoinColumn({ name: "workoutExerciseId", referencedColumnName: "_id" })
+    @JoinColumn({ name: "workout_exercise_id", referencedColumnName: "_id" })
     workoutExercise: WorkoutExerciseEntity;
 
-    @PrimaryColumn()
-    workoutExerciseId: number;
+    @PrimaryGeneratedColumn('uuid')
+    _id: string;
 
-
-    @PrimaryColumn()
+    @Column()
     setNumber: number
 
     @Column()

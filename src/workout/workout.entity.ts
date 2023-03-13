@@ -20,6 +20,9 @@ export class WorkoutEntity extends ModelEntity<Workout> {
     @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout)
     exercises: WorkoutExerciseEntity[];
 
+    @Column()
+    title: string;
+
     toType(): ModelType<Workout> {
         return new WorkoutType(this);
     }

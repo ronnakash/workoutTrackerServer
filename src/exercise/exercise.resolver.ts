@@ -15,7 +15,7 @@ export class ExerciseResolver extends ModelsResolver<Exercise>{
     }
 
     @Query( returns => [ExerciseType] )
-    async Excercises() : Promise<ModelType<Exercise>[]>{
+    async Exercises() : Promise<ModelType<Exercise>[]>{
         return await this.getAll();
     }
     
