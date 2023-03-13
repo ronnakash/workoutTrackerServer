@@ -18,7 +18,7 @@ type WorkoutExcercise {
   _id: ID!
   exercise: Excercise!
   reps: Float!
-  sets: Float!
+  excercises: [WorkoutExcercise!]!
 }
 
 type Workout {

@@ -9,16 +9,16 @@ import { ExerciseEntity } from "../exercise/exercise.entity";
 @ObjectType('WorkoutExcercise')
 export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
     
-    constructor(workoutExerciseEntity: WorkoutExerciseEntity);
-    constructor(workoutExercise: WorkoutExercise);
+    // constructor(workoutExerciseEntity: WorkoutExerciseEntity);
+    // constructor(workoutExercise: WorkoutExercise);
     
 
-    constructor(workoutExerciseEntityOrExercise: WorkoutExerciseEntity | WorkoutExercise) {
+    constructor(workoutExercise: WorkoutExerciseEntity | WorkoutExercise) {
         super();
-        this._id = workoutExerciseEntityOrExercise._id;
-        this.exercise = new ExerciseType(workoutExerciseEntityOrExercise.exercise);
-        this.reps = workoutExerciseEntityOrExercise.reps;
-        this.sets = workoutExerciseEntityOrExercise.sets;    
+        this._id = workoutExercise._id;
+        this.exercise = new ExerciseType(workoutExercise.exercise);
+        this.reps = workoutExercise.reps;
+        // this.sets = workoutExerciseEntityOrExercise.sets;    
 
     }
 
@@ -31,6 +31,6 @@ export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
     @Field(type => Number)
     reps: number;
 
-    @Field(type => Number)
-    sets: number;
+    @Field(type => [WorkoutExerciseType])
+    excercises: WorkoutExerciseType[];
 }

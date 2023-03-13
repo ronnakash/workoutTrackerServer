@@ -18,6 +18,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { UserService } from './user/user.service';
 import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
+import { WorkoutExerciseSetEntity } from './workout_exercise_set/workout-exercise-set.entity';
 
 dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 
@@ -39,6 +40,7 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
         ExerciseEntity,
         WorkoutExerciseEntity,
         WorkoutEntity,
+        WorkoutExerciseSetEntity,
       ],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
