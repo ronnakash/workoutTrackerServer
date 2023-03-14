@@ -17,7 +17,7 @@ export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
         super();
         // this._id = workoutExercise._id;
         this.exercise = new ExerciseType(workoutExercise.exercise);
-        this.reps = workoutExercise.reps;
+        // this.reps = workoutExercise.reps;
         // this.sets = workoutExerciseEntityOrExercise.sets;    
 
     }
