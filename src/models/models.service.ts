@@ -7,7 +7,7 @@ import { ModelEntity, ModelEntityWithId } from './models.entity';
 export abstract class ModelService<M extends ModelBase, E extends ModelEntity<M>> implements IModelService<M, E> {
     repository!: Repository<ModelEntity<M>>;
 
-    protected constructor(repository: Repository<ModelEntity<M>>) {
+    protected constructor(repository: Repository<E>) {
         this.repository = repository;
         // this.name = name;
     }
@@ -38,9 +38,11 @@ export abstract class ModelService<M extends ModelBase, E extends ModelEntity<M>
     //     return await this.newEntity(model);
     // }
 
-    async deleteOne(model : ModelEntity<M>) : Promise<void> {
-        await this.repository.delete(model._id);
+    async deleteOne(model : E) : Promise<void> {
+        await this.repository.softRemove(model);
     }
+
+    // abstract deleteOne(model : E) : Promise<void>;
 
     // async deleteOneById(id : string) : Promise<void> {
     //     await this.repository.delete(id);
@@ -69,6 +71,9 @@ export abstract class ModelServiceWithId<M extends ModelBaseWithId, E extends Mo
         await this.repository.delete(id);
     }
 
+    // async deleteOne(model: E) {
+    //     this.repository.softRemove(model);
+    // }
 }
 
 export interface IModelService<M extends ModelBase, E extends ModelEntity<M>> {

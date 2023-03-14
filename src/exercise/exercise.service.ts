@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ModelService } from '../models/models.service';
+import { ModelService, ModelServiceWithId } from '../models/models.service';
 import { Exercise } from './exercise.interfaces';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -9,7 +9,8 @@ import { ModelEntity } from '../models/models.entity';
 
 
 @Injectable()
-export class ExerciseService extends ModelService<Exercise, ExerciseEntity>{
+export class ExerciseService extends ModelServiceWithId<Exercise, ExerciseEntity>{
+
 
     constructor(@InjectRepository(ExerciseEntity) 
         private exercisesRepository: Repository<ExerciseEntity>) {
@@ -20,5 +21,6 @@ export class ExerciseService extends ModelService<Exercise, ExerciseEntity>{
     newEntity(model: Exercise): ExerciseEntity {
         return new ExerciseEntity(model);
     }
+
 
 }

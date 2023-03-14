@@ -22,8 +22,8 @@ export abstract class ModelEntity<M extends ModelBase> {
     protected constructor() {
     }
 
-    @PrimaryGeneratedColumn('uuid')
-    _id: string;
+    // @PrimaryGeneratedColumn('uuid')
+    // _id: string;
   
     abstract toType() : ModelType<M>;
 

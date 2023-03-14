@@ -1,5 +1,5 @@
 import { ObjectType, Field, ID } from "@nestjs/graphql";
-import { ModelType } from "../models/models.type";
+import { ModelType, ModelTypeWithId } from "../models/models.type";
 import { Workout } from "./workout.interfaces";
 import { WorkoutExerciseType } from "../workout-exercise/workout-exercise.type";
 import { WorkoutEntity } from "./workout.entity";
@@ -7,7 +7,7 @@ import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.enti
 import { WorkoutExercise } from "../workout-exercise/workout-exercise.interfaces";
 
 @ObjectType('Workout')
-export class WorkoutType extends ModelType<Workout> {
+export class WorkoutType extends ModelTypeWithId<Workout> {
 
     constructor(workoutEntity: WorkoutEntity);
     constructor(workout: Workout);

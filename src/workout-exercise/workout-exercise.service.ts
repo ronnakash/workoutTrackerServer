@@ -19,4 +19,8 @@ export class WorkoutExerciseService extends ModelService<WorkoutExercise, Workou
         return new WorkoutExerciseEntity(model);
     }
 
+    async deleteOne(model: WorkoutExerciseEntity) {
+        this.repository.softRemove(model);
+    }
+
 }

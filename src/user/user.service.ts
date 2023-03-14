@@ -8,6 +8,10 @@ import { ModelEntity } from '../models/models.entity';
 
 @Injectable()
 export class UserService extends ModelServiceWithId<User, UserEntity>{
+    
+    async deleteOne(model: UserEntity) {
+        this.repository.delete(model._id);
+    }
 
     constructor(@InjectRepository(UserEntity) 
         private userRepository: Repository<UserEntity>) {

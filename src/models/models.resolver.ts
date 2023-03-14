@@ -23,7 +23,7 @@ export abstract class ModelsResolver<M extends ModelBase> {
 
 @Resolver()
 export abstract class ModelsResolverWithId<M extends ModelBaseWithId, E extends ModelEntityWithId<M>> {
-    service : IModelServiceWithId<M, ModelEntity<M>>;
+    service : IModelServiceWithId<M, E>;
 
     protected constructor(service : IModelServiceWithId<M, E>) {
         this.service = service;

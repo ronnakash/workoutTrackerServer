@@ -1,10 +1,10 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
-import { ModelType } from "../models/models.type";
+import { ModelType, ModelTypeWithId } from "../models/models.type";
 import { User } from "./user.interfaces";
 import { UserEntity } from "./user.entity";
 
 @ObjectType('User')
-export class UserType extends ModelType<User> {
+export class UserType extends ModelTypeWithId<User> {
     
     constructor(userEntity: UserEntity) {
         super();

@@ -1,14 +1,14 @@
 import { Entity, Column, ObjectIdColumn, JoinColumn, ManyToMany, OneToMany, JoinTable } from "typeorm";
 import { Workout } from "./workout.interfaces";
 import { WorkoutExercise } from "../workout-exercise/workout-exercise.interfaces";
-import { ModelEntity } from "../models/models.entity";
+import { ModelEntity, ModelEntityWithId } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
 import { WorkoutType } from "./workout.type";
 import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.entity";
 import { ExerciseEntity } from "../exercise/exercise.entity";
 
 @Entity('workout', { name: 'postgres' })
-export class WorkoutEntity extends ModelEntity<Workout> {
+export class WorkoutEntity extends ModelEntityWithId<Workout> {
 
     public constructor(model? : Workout) {
         super();

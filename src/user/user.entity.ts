@@ -1,11 +1,11 @@
-import { ModelEntity } from "../models/models.entity";
+import { ModelEntity, ModelEntityWithId } from "../models/models.entity";
 import { User } from "./user.interfaces";
 import { Column, Entity, PrimaryColumn } from "typeorm";
 import { ModelType } from "../models/models.type";
 import { UserType } from "./user.type";
 
 @Entity('User')
-export class UserEntity extends ModelEntity<User> {    
+export class UserEntity extends ModelEntityWithId<User> {    
 
     public constructor(model? : User) {
         super();
