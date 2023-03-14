@@ -18,16 +18,16 @@ export class ExerciseType extends ModelTypeWithId<Exercise> {
         this.workload = exercise.workload;    
     }
 
-    @Field(type => ID)
+    @Field(type => ID, {nullable: true})
     _id: string;
 
-    @Field()
+    @Field({nullable: true})
     name: string;
 
-    @Field(type => [WeightedMuscleType])
+    @Field(type => [WeightedMuscleType], {nullable: true})
     musclesWorked: WeightedMuscleType[];
 
-    @Field()
+    @Field({nullable: true})
     workload: number;
 }
 

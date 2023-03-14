@@ -1,7 +1,7 @@
 import { Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { WorkoutType } from './workout.type';
 import { WorkoutExerciseType } from '../workout-exercise/workout-exercise.type';
-import { ModelsResolver } from '../models/models.resolver';
+import { ModelsResolver, ModelsResolverWithId } from '../models/models.resolver';
 import { Workout } from './workout.interfaces';
 import { WorkoutService } from './workout.service';
 import { ExerciseType } from '../exercise/exercise.type';
@@ -12,7 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { WorkoutExerciseService } from '../workout-exercise/workout-exercise.service';
 
 @Resolver(of => WorkoutType)
-export class WorkoutResolver extends ModelsResolver<Workout> {
+export class WorkoutResolver extends ModelsResolverWithId<Workout, WorkoutEntity> {
 
     public constructor(
         private workoutService : WorkoutService,

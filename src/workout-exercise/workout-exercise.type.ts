@@ -22,15 +22,15 @@ export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
 
     }
 
-    @Field(type => ID)
-    _id: string;
+    // @Field(type => ID)
+    // _id: string;
 
-    @Field(type => ExerciseType)
+    @Field(type => ExerciseType, {nullable: true})
     exercise: ExerciseType;
 
-    @Field(type => Number)
+    @Field(type => Number, {nullable: true})
     reps: number;
 
-    @Field(type => [WorkoutExerciseType])
+    @Field(type => [WorkoutExerciseType], {nullable: true})
     excercises: WorkoutExerciseType[];
 }

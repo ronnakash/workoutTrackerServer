@@ -3,10 +3,10 @@
 # ------------------------------------------------------
 
 type Excercise {
-  _id: ID!
-  name: String!
-  musclesWorked: [WeightedMuscleType!]!
-  workload: Float!
+  _id: ID
+  name: String
+  musclesWorked: [WeightedMuscleType!]
+  workload: Float
 }
 
 type WeightedMuscleType {
@@ -15,10 +15,9 @@ type WeightedMuscleType {
 }
 
 type WorkoutExcercise {
-  _id: ID!
-  exercise: Excercise!
-  reps: Float!
-  excercises: [WorkoutExcercise!]!
+  exercise: Excercise
+  reps: Float
+  excercises: [WorkoutExcercise!]
 }
 
 type Workout {

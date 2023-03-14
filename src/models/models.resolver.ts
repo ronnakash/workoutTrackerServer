@@ -29,10 +29,10 @@ export abstract class ModelsResolverWithId<M extends ModelBaseWithId, E extends 
         this.service = service;
     }
 
-    async getAll(): Promise<ModelType<M>[]> {
+    async getAll(): Promise<E[]> {
         const entities = await this.service.getAll();
-        let result = entities.map(e => e.toType());
-        return result;
+        // let result = entities.map(e => e.toType() as E);
+        return entities;
     }
 
 }

@@ -68,7 +68,7 @@ export abstract class ModelServiceWithId<M extends ModelBaseWithId, E extends Mo
     }
 
     async deleteOneById(id : string) : Promise<void> {
-        await this.repository.delete(id);
+        await this.repository.softRemove({_id: id});
     }
 
     // async deleteOne(model: E) {

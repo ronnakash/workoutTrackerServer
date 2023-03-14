@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryColumn } from "typeorm";
 import { ModelType } from "../models/models.type";
 import { UserType } from "./user.type";
 
-@Entity('User')
+@Entity('User', { name: 'postgres' })
 export class UserEntity extends ModelEntityWithId<User> {    
 
     public constructor(model? : User) {
