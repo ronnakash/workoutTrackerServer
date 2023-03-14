@@ -21,19 +21,19 @@ export class WorkoutEntity extends ModelEntity<Workout> {
     @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout)
     exercises: WorkoutExerciseEntity[];
 
-    @ManyToMany(() => ExerciseEntity, exercise => exercise.workouts)
-    @JoinTable({
-      name: 'workout_exercise',
-      joinColumn: {
-        name: 'workout_id',
-        referencedColumnName: '_id'
-      },
-      inverseJoinColumn: {
-        name: 'exercise_id',
-        referencedColumnName: '_id'
-      }
-    })
-    exercisesList: ExerciseEntity[];
+    // @ManyToMany(() => ExerciseEntity, exercise => exercise.workouts)
+    // @JoinTable({
+    //   name: 'workout_exercise',
+    //   joinColumn: {
+    //     name: 'workout_id',
+    //     referencedColumnName: '_id'
+    //   },
+    //   inverseJoinColumn: {
+    //     name: 'exercise_id',
+    //     referencedColumnName: '_id'
+    //   }
+    // })
+    // exercisesList: ExerciseEntity[];
   
 
     @Column()

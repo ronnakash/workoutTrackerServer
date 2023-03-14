@@ -1,10 +1,11 @@
-import { Entity, Column, ObjectIdColumn, ManyToMany } from "typeorm";
+import { Entity, Column, ObjectIdColumn, ManyToMany, OneToMany } from "typeorm";
 import { Exercise, WeightedMuscle } from "./exercise.interfaces";
 import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
 import { ExerciseType } from "./exercise.type";
 import { isNullableType } from "graphql";
 import { WorkoutEntity } from "../workout/workout.entity";
+import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.entity";
 
 @Entity('exercise', { name: 'postgres' })
 export class ExerciseEntity extends ModelEntity<Exercise> {
@@ -28,11 +29,15 @@ export class ExerciseEntity extends ModelEntity<Exercise> {
     @Column()
     workload: number;
 
-    @ManyToMany(() => WorkoutEntity, workout => workout.exercises)
-    workouts: WorkoutEntity[];  
+    // @ManyToMany(() => WorkoutEntity, workout => workout.exercises)
+    // workouts: WorkoutEntity[];  
 
     // @Column({ type: 'json', array: false, nullable: true })
     // musclesWorked: WeightedMuscle[];
+
+    @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout)
+    exercises: WorkoutExerciseEntity[];
+
 
     toType(): ModelType<Exercise> {
         return new ExerciseType(this);
