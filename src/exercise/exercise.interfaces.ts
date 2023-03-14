@@ -1,4 +1,4 @@
-import { ModelBase } from "src/models/models.interfaces";
+import { ModelBase, ModelBaseWithId } from "../models/models.interfaces";
 
 export enum Muscle {
     Chest, 
@@ -25,7 +25,7 @@ export interface WeightedMuscle {
     workload: number,
 }
 
-export interface Exercise extends ModelBase {
+export interface Exercise extends ModelBaseWithId {
     name: string;
     // musclesWorked: WeightedMuscle[];
     workload: number;

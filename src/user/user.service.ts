@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ModelService } from '../models/models.service';
+import { ModelService, ModelServiceWithId } from '../models/models.service';
 import { User } from './user.interfaces';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from './user.entity';
@@ -7,7 +7,7 @@ import { Repository } from 'typeorm';
 import { ModelEntity } from '../models/models.entity';
 
 @Injectable()
-export class UserService extends ModelService<User>{
+export class UserService extends ModelServiceWithId<User, UserEntity>{
 
     constructor(@InjectRepository(UserEntity) 
         private userRepository: Repository<UserEntity>) {
@@ -15,6 +15,6 @@ export class UserService extends ModelService<User>{
     }
 
 
-    newEntity(model: User): ModelEntity<User> {
+    newEntity(model: User): UserEntity {
         return new UserEntity(model);
     }}

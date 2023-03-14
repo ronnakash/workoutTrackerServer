@@ -1,5 +1,5 @@
 import { JwtPayload } from 'jsonwebtoken';
-import { ModelBase } from '../models/models.interfaces';
+import { ModelBase, ModelBaseWithId } from '../models/models.interfaces';
 
 //interface to pass params to User constructor
 
@@ -31,7 +31,7 @@ export interface UserProps extends UserLoginProps{
     googleAccessToken?: string;
 }
 
-export interface User extends UserProps, ModelBase{
+export interface User extends UserProps, ModelBaseWithId{
     password: string;
     permissions: string;
     passwordChangedAt: number;

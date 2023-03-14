@@ -9,7 +9,7 @@ import { ModelEntity } from '../models/models.entity';
 
 
 @Injectable()
-export class ExerciseService extends ModelService<Exercise>{
+export class ExerciseService extends ModelService<Exercise, ExerciseEntity>{
 
     constructor(@InjectRepository(ExerciseEntity) 
         private exercisesRepository: Repository<ExerciseEntity>) {
@@ -17,7 +17,7 @@ export class ExerciseService extends ModelService<Exercise>{
     }
 
 
-    newEntity(model: Exercise): ModelEntity<Exercise> {
+    newEntity(model: Exercise): ExerciseEntity {
         return new ExerciseEntity(model);
     }
 

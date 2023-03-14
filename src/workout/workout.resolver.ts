@@ -9,14 +9,16 @@ import { UseGuards } from '@nestjs/common';
 import { ExistsJWTMiddleware, ValidateUserOrAdminMiddleware } from '../middleware/middleware.functions';
 import { WorkoutEntity } from './workout.entity';
 import { v4 as uuidv4 } from 'uuid';
+import { WorkoutExerciseService } from '../workout-exercise/workout-exercise.service';
 
 @Resolver(of => WorkoutType)
 export class WorkoutResolver extends ModelsResolver<Workout> {
 
     public constructor(
-        private excercisesService : WorkoutService,
+        private workoutService : WorkoutService,
+        private workoutExerciseService : WorkoutExerciseService
         ) {
-            super(excercisesService)
+            super(workoutService)
     }
 
     @Query( returns => [WorkoutType] )
@@ -25,10 +27,10 @@ export class WorkoutResolver extends ModelsResolver<Workout> {
         return await this.getAll();
     }
     
-    // @ResolveField()
-    // async workoutExcercises(@Parent() workout: WorkoutType) {
-    //     const { _id } = workout;
-    //     return await this.workoutExcerciseService.getAllBy({})
-    // }
+    @ResolveField()
+    async exercises(@Parent() workout: WorkoutType) {
+        const { _id } = workout;
+        return await this.workoutExerciseService.getAllBy({})
+    }
 
 }

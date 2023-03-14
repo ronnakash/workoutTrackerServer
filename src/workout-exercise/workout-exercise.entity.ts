@@ -9,10 +9,10 @@ import { ExerciseEntity } from "../exercise/exercise.entity";
 import { WorkoutExerciseSetEntity } from "../workout_exercise_set/workout-exercise-set.entity";
 
 @Entity('workout_exercise', { name: 'postgres' })
-export class WorkoutExerciseEntity {
+export class WorkoutExerciseEntity extends ModelEntity<WorkoutExercise>{
 
     public constructor(model? : WorkoutExercise) {
-        // super();
+        super();
         if (model) {
             this.exercise = new ExerciseEntity(model.exercise);
             this.workout = new WorkoutEntity(model.workout);
