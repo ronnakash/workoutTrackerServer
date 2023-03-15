@@ -5,6 +5,9 @@ import { WorkoutExercise } from "./workout-exercise.interfaces";
 import { ExerciseType } from "../exercise/exercise.type";
 import { WorkoutExerciseEntity } from "./workout-exercise.entity";
 import { ExerciseEntity } from "../exercise/exercise.entity";
+import { WorkoutExerciseSetType } from "../workout_exercise_set/workout-exercise-set.type";
+import { WorkoutExerciseSet } from "../workout_exercise_set/workout-exercise-set.interfaces";
+import { WorkoutExerciseSetEntity } from "../workout_exercise_set/workout-exercise-set.entity";
 
 @ObjectType('WorkoutExcercise')
 export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
@@ -18,7 +21,7 @@ export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
         // this._id = workoutExercise._id;
         this.exercise = new ExerciseType(workoutExercise.exercise);
         // this.reps = workoutExercise.reps;
-        // this.sets = workoutExerciseEntityOrExercise.sets;    
+        this.sets = workoutExercise.sets.map((e : WorkoutExerciseSetEntity | WorkoutExerciseSet) => new WorkoutExerciseSetType(e));    
 
     }
 
@@ -28,9 +31,9 @@ export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
     @Field(type => ExerciseType, {nullable: true})
     exercise: ExerciseType;
 
-    @Field(type => Number, {nullable: true})
-    reps: number;
+    @Field(type => [WorkoutExerciseSetType], {nullable: true})
+    sets:  WorkoutExerciseSetType[]
 
-    @Field(type => [WorkoutExerciseType], {nullable: true})
-    excercises: WorkoutExerciseType[];
+    // @Field(type => [WorkoutExerciseType], {nullable: true})
+    // excercises: WorkoutExerciseType[];
 }

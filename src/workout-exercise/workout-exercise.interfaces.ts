@@ -6,5 +6,5 @@ import { WorkoutExerciseSet } from "src/workout_exercise_set/workout-exercise-se
 export interface WorkoutExercise extends ModelBase {
     exercise: Exercise;
     workout: Workout;
-    sets: WorkoutExerciseSet;
+    sets: WorkoutExerciseSet[];
 }

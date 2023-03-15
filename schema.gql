@@ -14,10 +14,16 @@ type WeightedMuscleType {
   workload: Float!
 }
 
+type WorkoutExcerciseSet {
+  exercise: Excercise!
+  reps: Float!
+  setNumber: Float!
+  rpe: Float!
+}
+
 type WorkoutExcercise {
   exercise: Excercise
-  reps: Float
-  excercises: [WorkoutExcercise!]
+  sets: [WorkoutExcerciseSet!]
 }
 
 type Workout {
