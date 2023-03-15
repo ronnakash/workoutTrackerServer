@@ -13,15 +13,19 @@ export abstract class ModelService<M extends ModelBase, E extends ModelEntity<M>
     }
 
     async getAll() : Promise<E[]> {
-        // return (await this.repository.find()).map(e => e.toType() as E);
-        const entities = await this.repository.find();
-        const res1 = entities.map(e => e.toType());
-        const res2 = res1.map(e => e as E);
-        return res2
+        return (await this.repository.find()).map(e => e.toType() as E);
+        // const entities = await this.repository.find();
+        // const res1 = entities.map(e => e.toType());
+        // const res2 = res1.map(e => e as E);
+        // return res2
+    }
+
+    async getWithRelations(model: Partial<M>, relations: string[]): Promise<E[]> {
+        return (await this.repository.find({where: {...model}, relations})) as E[];
     }
 
     async getAllBy(model: Partial<M> ): Promise<E[]> {
-        return (await this.repository.find({where: {...model}})).map(e => e.toType() as E);
+        return (await this.repository.find({where: {...model}})) as E[];
     }
 
     // async getOneById(id : string) : Promise<E> {
@@ -29,12 +33,12 @@ export abstract class ModelService<M extends ModelBase, E extends ModelEntity<M>
     // }
 
     async getOneBy(model: Partial<M>) : Promise<E> {
-        return (await this.repository.findOne({where: {...model}})).toType() as E;
+        return await this.repository.findOne({where: {...model}}) as E;
     }
 
     async createModel(model: Partial<M>): Promise<E> {
         const entity : ModelEntity<M> = await this.newEntity(model);
-        return (await this.repository.save(entity)).toType() as E;
+        return (await this.repository.save(entity)) as E;
     }
 
     // async updateModel(model: Partial<M>): Promise<ModelEntity<M>> {

@@ -6,4 +6,5 @@ export interface WorkoutExerciseSet {
     setNumber: number
     reps: number;
     rpe: number;
+    weight: number;
 }

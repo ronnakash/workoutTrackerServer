@@ -16,6 +16,7 @@ export class WorkoutExerciseSetType extends ModelType<WorkoutExerciseSet>{
         this.setNumber = workoutExerciseSet.setNumber;
         this.reps = workoutExerciseSet.reps;
         this.rpe = workoutExerciseSet.rpe;
+        this.weight = workoutExerciseSet.weight;
     }
 
 
@@ -30,5 +31,8 @@ export class WorkoutExerciseSetType extends ModelType<WorkoutExerciseSet>{
 
     @Field(type => Number)
     rpe: number;
+
+    @Field(type => Number, {nullable: true})
+    weight: number;
 
 }

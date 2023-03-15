@@ -19,6 +19,7 @@ type WorkoutExcerciseSet {
   reps: Float!
   setNumber: Float!
   rpe: Float!
+  weight: Float
 }
 
 type WorkoutExcercise {

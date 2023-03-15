@@ -14,8 +14,8 @@ export abstract class ModelsResolver<M extends ModelBase> {
 
     async getAll(): Promise<ModelType<M>[]> {
         const entities = await this.service.getAll();
-        let result = entities.map(e => e.toType());
-        return result;
+        // let result = entities.map(e => e.toType());
+        return entities;
     }
 
 }

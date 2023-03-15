@@ -25,10 +25,10 @@ export class WorkoutResolver extends ModelsResolverWithId<Workout, WorkoutEntity
     @UseGuards(ExistsJWTMiddleware, ValidateUserOrAdminMiddleware)
     async Workouts() {
         // return await this.getAll();
-        const entities = await this.service.repository.find({relations: ['exercises', 'exercises.sets', 'exercises.exercise']});
+        const entities = await this.service.getWithRelations(undefined, ['exercises', 'exercises.sets', 'exercises.exercise']);
         const res1 = entities.map(e => e.toType());
         const res2 = res1.map(e => e as WorkoutType);
-        return res2;
+        return res1;
     }
     
     // @ResolveField()

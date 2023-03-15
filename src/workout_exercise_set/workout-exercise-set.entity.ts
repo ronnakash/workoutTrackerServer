@@ -29,6 +29,9 @@ export class WorkoutExerciseSetEntity extends ModelEntity<WorkoutExerciseSet> {
     @Column()
     rpe: number;
 
+    @Column()
+    weight: number;
+
     toType(): ModelType<WorkoutExerciseSet> {
         throw new Error("Method not implemented.");
     }
