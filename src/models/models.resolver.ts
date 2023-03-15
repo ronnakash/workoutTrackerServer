@@ -1,7 +1,7 @@
 import { Resolver } from '@nestjs/graphql';
 import { ModelBase, ModelBaseWithId } from './models.interfaces';
 import { ModelEntity, ModelEntityWithId } from './models.entity';
-import { IModelService, IModelServiceWithId } from './models.service';
+import { IModelService, IModelServiceWithId, ModelServiceWithId } from './models.service';
 import { ModelType } from './models.type';
 
 @Resolver()
@@ -23,9 +23,9 @@ export abstract class ModelsResolver<M extends ModelBase> {
 
 @Resolver()
 export abstract class ModelsResolverWithId<M extends ModelBaseWithId, E extends ModelEntityWithId<M>> {
-    service : IModelServiceWithId<M, E>;
+    service : ModelServiceWithId<M, E>;
 
-    protected constructor(service : IModelServiceWithId<M, E>) {
+    protected constructor(service : ModelServiceWithId<M, E>) {
         this.service = service;
     }
 

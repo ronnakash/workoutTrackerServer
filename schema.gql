@@ -22,6 +22,7 @@ type WorkoutExcercise {
 
 type Workout {
   _id: ID!
+  title: String!
   exercises: [WorkoutExcercise!]
 }
 

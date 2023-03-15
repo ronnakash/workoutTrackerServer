@@ -13,10 +13,14 @@ export abstract class ModelService<M extends ModelBase, E extends ModelEntity<M>
     }
 
     async getAll() : Promise<E[]> {
-        return (await this.repository.find()).map(e => e.toType() as E);
+        // return (await this.repository.find()).map(e => e.toType() as E);
+        const entities = await this.repository.find();
+        const res1 = entities.map(e => e.toType());
+        const res2 = res1.map(e => e as E);
+        return res2
     }
 
-    async getAllBy(model: Partial<M>): Promise<E[]> {
+    async getAllBy(model: Partial<M> ): Promise<E[]> {
         return (await this.repository.find({where: {...model}})).map(e => e.toType() as E);
     }
 
@@ -77,6 +81,8 @@ export abstract class ModelServiceWithId<M extends ModelBaseWithId, E extends Mo
 }
 
 export interface IModelService<M extends ModelBase, E extends ModelEntity<M>> {
+
+    
     getAll() : Promise<E[]>;
     getAllBy(model: M): Promise<E[]>;
     // getOneById(id : string) : Promise<ModelEntity<M>>;
