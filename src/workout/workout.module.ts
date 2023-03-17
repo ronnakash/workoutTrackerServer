@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, UseGuards } from '@nestjs/common';
 import { WorkoutService } from './workout.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WorkoutEntity } from './workout.entity';
@@ -21,4 +21,10 @@ import { WorkoutExerciseEntity } from '../workout-exercise/workout-exercise.enti
     TypeOrmModule,
 ],
 })
-export class WorkoutModule extends ModelsModule<Workout>{}
+// @UseGuards(ExistsJWTMiddleware, ValidateUserOrAdminMiddleware)
+export class WorkoutModule extends ModelsModule<Workout>{
+  configure(consumer: MiddlewareConsumer) {
+    super.configure(consumer);
+    // consumer.apply(ExistsJWTMiddleware, ValidateUserOrAdminMiddleware).forRoutes(WorkoutResolver)
+  }
+}

@@ -19,6 +19,7 @@ import { UserService } from './user/user.service';
 import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 import { WorkoutExerciseSetEntity } from './workout_exercise_set/workout-exercise-set.entity';
+import { WorkoutResolver } from './workout/workout.resolver';
 
 dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 
@@ -46,11 +47,13 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: 'schema.gql',
       driver: ApolloDriver,
+      context: ({ req }) => ({ req }),
     }),
     ExcercisesModule,
     WorkoutModule,
     // WorkoutExcerciseModule,
-    AuthModule
+    AuthModule,
+    WorkoutModule,
   ],
   controllers: [AppController],
   providers: [
@@ -64,5 +67,6 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 })
 export class AppModule implements NestModule{
   configure(consumer: MiddlewareConsumer) {
+    // consumer.apply(ExistsJWTMiddleware, ValidateUserOrAdminMiddleware).forRoutes(WorkoutResolver)
   }
 }
