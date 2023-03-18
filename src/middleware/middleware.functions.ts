@@ -1,10 +1,9 @@
-import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Injectable, NestInterceptor, ExecutionContext, CallHandler, BadGatewayException } from '@nestjs/common';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { JWTParams } from './middleware.interfaces';
 import AppError from '../util/app-error';
 import config from '../config/config';
-// import jwt from 'jsonwebtoken';
 const jwt = require('jsonwebtoken');
 
 @Injectable()
@@ -34,7 +33,7 @@ export class ValidateUserOrAdminInterceptor implements NestInterceptor {
     }
     // check if author/username match the username of token
     const requestUser = body.author || body.email;
-    if (requestUser == email) {
+    if (requestUser == email && requestUser != undefined) {
       return next.handle();
     } else {
       throw new AppError(`Users without admin permissions can't make actions regarding other users`, 400);
@@ -84,5 +83,18 @@ export class ExistsJWTInterceptor implements NestInterceptor {
     } else {
       throw new AppError(`no token provided`, 400);
     }
+  }
+}
+
+
+@Injectable()
+export class ErrorsInterceptor implements NestInterceptor {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    console.log("ErrorsInterceptor")
+    return next
+      .handle()
+      .pipe(
+        catchError(err => throwError(() => new AppError(err))),
+      );
   }
 }

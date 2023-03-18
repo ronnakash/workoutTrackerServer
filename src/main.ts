@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv';
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
 import { Request, Response } from 'express';
 import "reflect-metadata";
+import { ErrorsInterceptor } from './middleware/middleware.functions';
 
 dotenv.config({path:`${__dirname}/.env`});
 
@@ -32,6 +33,7 @@ const bootstrap = async () => {
   const app = await NestFactory.create(AppModule);
   console.log("Created nest app");
   // app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalInterceptors(new ErrorsInterceptor());
   app.listen(5000);
   // console.log("listening on port 5000");
   app.enableCors({
