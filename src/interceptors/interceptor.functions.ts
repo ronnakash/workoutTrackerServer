@@ -1,7 +1,7 @@
 import { Injectable, NestInterceptor, ExecutionContext, CallHandler, BadGatewayException } from '@nestjs/common';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { JWTParams } from './middleware.interfaces';
+import { JWTParams } from './interceptor.interfaces';
 import AppError from '../util/app-error';
 import config from '../config/config';
 const jwt = require('jsonwebtoken');

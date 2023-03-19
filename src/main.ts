@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
 import { Request, Response } from 'express';
 import "reflect-metadata";
-import { ErrorsInterceptor } from './middleware/middleware.functions';
+import { ErrorsInterceptor } from './interceptors/interceptor.functions';
 
 dotenv.config({path:`${__dirname}/.env`});
 

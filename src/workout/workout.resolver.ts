@@ -9,7 +9,7 @@ import { UseGuards, UseInterceptors } from '@nestjs/common';
 import { WorkoutEntity } from './workout.entity';
 import { v4 as uuidv4 } from 'uuid';
 import { WorkoutExerciseService } from '../workout-exercise/workout-exercise.service';
-import { ExistsJWTInterceptor, GetJWTInterceptor, ValidateAdminTokenInterceptor, ValidateUserOrAdminInterceptor } from '../middleware/middleware.functions';
+import { ExistsJWTInterceptor, GetJWTInterceptor, ValidateAdminTokenInterceptor, ValidateUserOrAdminInterceptor } from '../interceptors/interceptor.functions';
 
 @Resolver(of => WorkoutType)
 // @UseInterceptors(GetJWTInterceptor, ExistsJWTInterceptor, ValidateUserOrAdminInterceptor)
