@@ -5,3 +5,14 @@ export interface ModelBaseWithId extends ModelBase {
     _id: string;
 }
 
+interface IEdgeType<T extends ModelBase> {
+    cursor: string;
+    node: T;
+  }
+  
+  export interface IPaginatedType<T extends ModelBase> {
+    edges: IEdgeType<T>[];
+    nodes: T[];
+    totalCount: number;
+    hasNextPage: boolean;
+  }
