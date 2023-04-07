@@ -1,27 +1,26 @@
 import { Entity, Column, ObjectIdColumn, JoinColumn, ManyToMany, OneToMany, JoinTable, ManyToOne } from "typeorm";
-import { Workout } from "./workout.interfaces";
 import { WorkoutExercise } from "../workout-exercise/workout-exercise.interfaces";
 import { ModelEntity, ModelEntityWithId } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
-import { WorkoutType } from "./workout.type";
 import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.entity";
-import { ExerciseEntity } from "../exercise/exercise.entity";
 import { UserEntity } from "../user/user.entity";
+import { WorkoutTemplate } from "./workout-template.interfaces";
+import { WorkoutTemplateType } from "./workout-template.type";
 
-@Entity('workout', { name: 'postgres' })
-export class WorkoutEntity extends ModelEntityWithId<Workout> {
+@Entity('workout_template', { name: 'postgres' })
+export class WorkoutTemplateEntity extends ModelEntityWithId<WorkoutTemplate> {
 
-    public constructor(model? : Workout) {
+    public constructor(model? : WorkoutTemplate) {
         super();
         if(model){
             this._id = model._id;
-            this.exercises = model.exercises.map(e => new WorkoutExerciseEntity(e));
+            // this.exercises = model.exercises.map(e => new WorkoutTemplateExerciseEntity(e));
             this.author = new UserEntity(model.author);
         }
     }
 
-    @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout)
-    exercises: WorkoutExerciseEntity[];
+    // @OneToMany(() => WorkoutTemplateExerciseEntity, workoutTemplateExercise => workoutTemplateExercise.workout)
+    // exercises: WorkoutTemplateExerciseEntity[];
  
     @ManyToOne(() => UserEntity, user => user.workouts, { lazy: true })
     @JoinColumn()
@@ -31,8 +30,8 @@ export class WorkoutEntity extends ModelEntityWithId<Workout> {
     @Column()
     title: string;
 
-    toType(): ModelType<Workout> {
-        return new WorkoutType(this);
+    toType(): ModelType<WorkoutTemplate> {
+        return new WorkoutTemplateType(this);
     }
 
 }

@@ -18,6 +18,7 @@ import { UserService } from './user/user.service';
 import { AuthModule } from './auth/auth.module';
 import { WorkoutExerciseSetEntity } from './workout_exercise_set/workout-exercise-set.entity';
 import { UserEntity } from './user/user.entity';
+import { WorkoutTemplateModule } from './workout-template/workout-template.module';
 
 dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 
@@ -53,6 +54,7 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
     // WorkoutExcerciseModule,
     AuthModule,
     WorkoutModule,
+    WorkoutTemplateModule,
   ],
   controllers: [AppController],
   providers: [
