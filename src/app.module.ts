@@ -20,6 +20,8 @@ import { WorkoutExerciseSetEntity } from './workout_exercise_set/workout-exercis
 import { UserEntity } from './user/user.entity';
 import { WorkoutTemplateModule } from './workout-template/workout-template.module';
 import { WorkoutTemplateEntity } from './workout-template/workout-template.entity';
+import { WorkoutTemplateExerciseModule } from './workout-template-exercise/workout-template-exercise.module';
+import { WorkoutTemplateExerciseEntity } from './workout-template-exercise/workout-template-exercise.entity';
 
 dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 
@@ -44,6 +46,7 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
         WorkoutExerciseSetEntity,
         UserEntity,
         WorkoutTemplateEntity,
+        WorkoutTemplateExerciseEntity
       ],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -57,6 +60,7 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
     AuthModule,
     WorkoutModule,
     WorkoutTemplateModule,
+    WorkoutTemplateExerciseModule,
   ],
   controllers: [AppController],
   providers: [

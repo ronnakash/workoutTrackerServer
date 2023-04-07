@@ -16,17 +16,8 @@ export class WorkoutExerciseEntity extends ModelEntity<WorkoutExercise>{
         if (model) {
             this.exercise = new ExerciseEntity(model.exercise);
             this.workout = new WorkoutEntity(model.workout);
-            // this.reps = model.reps;
-            // this.sets = model.sets;
         }
     }
-
-    // @ManyToOne(() => WorkoutEntity, workout => workout.exercises)
-    // workout: WorkoutEntity;
-
-
-    // @JoinColumn({name: 'exercise', referencedColumnName: 'exercise'})
-    // exercise: ExerciseEntity;
 
     @ManyToOne(() => WorkoutEntity, workout => workout.exercises)
     @JoinColumn({ name: 'workout' })
@@ -38,8 +29,6 @@ export class WorkoutExerciseEntity extends ModelEntity<WorkoutExercise>{
     @PrimaryColumn('uuid')
     exercise: ExerciseEntity;
 
-    // @Column()
-    // reps: number;
 
     @OneToMany(() => WorkoutExerciseSetEntity, set => set.workoutExercise)
     sets: WorkoutExerciseSetEntity[];
