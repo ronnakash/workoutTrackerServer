@@ -33,12 +33,7 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
       username: process.env.SUPABASE_USERNAME,
       password: process.env.SUPABASE_PASSWORD,
       synchronize: true,
-      // useUnifiedTopology: true,
       database: "postgres",
-      // ssl: {
-      //   rejectUnauthorized: true,
-      // },
-      // authSource: 'admin',
       entities: [
         ExerciseEntity,
         WorkoutExerciseEntity,

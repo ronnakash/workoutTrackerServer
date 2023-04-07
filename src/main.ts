@@ -10,23 +10,6 @@ dotenv.config({path:`${__dirname}/.env`});
 
 require('dotenv').config();
 
-// @Catch(HttpException)
-// export class HttpExceptionFilter implements ExceptionFilter {
-//   catch(exception: HttpException, host: ArgumentsHost) {
-//     const ctx = host.switchToHttp();
-//     const response = ctx.getResponse<Response>();
-//     const request = ctx.getRequest<Request>();
-//     const status = exception.getStatus();
-
-//     response
-//       .status(status)
-//       .json({
-//         statusCode: status,
-//         timestamp: new Date().toISOString(),
-//         path: request.url,
-//       });
-//   }
-// }
 
 const bootstrap = async () => {
   // console.log("Creating nest app");
@@ -41,6 +24,8 @@ const bootstrap = async () => {
       allowedHeaders: ['Origin, X-Requested-With, Content-Type, Accept, Authorization'],
       methods: ['PUT, POST, PATCH, DELETE, GET']
   });
+  return app;
 }
 
+// export const server = bootstrap();
 bootstrap();

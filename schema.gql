@@ -34,7 +34,26 @@ type Workout {
   exercises: [WorkoutExcercise!]
 }
 
+type WorkoutTemplate {
+  authourId: ID!
+  _id: ID!
+  title: String!
+}
+
+type WorkoutTemplateExerciseSet {
+  reps: Float
+  rpe: Float
+  weight: Float
+}
+
+type WorkoutTemplateExercise {
+  exercise: Excercise
+  sets: [WorkoutTemplateExerciseSet!]
+}
+
 type Query {
   Exercises: [Excercise!]!
   Workouts: [Workout!]!
+  WorkoutTemplates: [WorkoutTemplate!]!
+  WorkoutTemplateExcercises: [WorkoutTemplateExercise!]!
 }
