@@ -16,15 +16,15 @@ import { WorkoutTemplateService } from './workout-template.service';
 export class WorkoutTemplateResolver extends ModelsResolverWithId<WorkoutTemplate, WorkoutTemplateEntity> {
 
     public constructor(
-        private workoutService : WorkoutTemplateService,
+        private workoutTemplateService : WorkoutTemplateService,
         // private workoutExerciseService : WorkoutExerciseService
         ) {
-            super(workoutService)
+            super(workoutTemplateService)
     }
 
     @Query( returns => [WorkoutTemplateType] )
     // @UseInterceptors(GetJWTInterceptor, ExistsJWTInterceptor, ValidateUserOrAdminInterceptor)
-    async Workouts(@Context() context: any) {
+    async WorkoutTemplates(@Context() context: any) {
         // return await this.getAll();
         const req: Request = context.req;
 

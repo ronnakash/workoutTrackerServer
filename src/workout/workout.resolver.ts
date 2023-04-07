@@ -27,7 +27,7 @@ export class WorkoutResolver extends ModelsResolverWithId<Workout, WorkoutEntity
     async Workouts(@Context() context: any) {
         // return await this.getAll();
         const req: Request = context.req;
-
+        console.log("req");
         const entities = await this.service.getWithRelations(undefined, ['exercises', 'exercises.sets', 'exercises.exercise']);
         const res1 = entities.map(e => e.toType());
         // const res2 = res1.map(e => e as WorkoutType);

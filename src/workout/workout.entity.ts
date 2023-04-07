@@ -7,6 +7,7 @@ import { WorkoutType } from "./workout.type";
 import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.entity";
 import { ExerciseEntity } from "../exercise/exercise.entity";
 import { UserEntity } from "../user/user.entity";
+import { WorkoutTemplateEntity } from "../workout-template/workout-template.entity";
 
 @Entity('workout', { name: 'postgres' })
 export class WorkoutEntity extends ModelEntityWithId<Workout> {
@@ -27,6 +28,9 @@ export class WorkoutEntity extends ModelEntityWithId<Workout> {
     @JoinColumn()
     author: UserEntity;
 
+    @ManyToOne(() => WorkoutTemplateEntity, { lazy: true })
+    @JoinColumn()
+    template: WorkoutTemplateEntity;
 
     @Column()
     title: string;

@@ -2,6 +2,8 @@ import { ObjectType, Field, ID } from "@nestjs/graphql";
 import { ModelType, ModelTypeWithId } from "../models/models.type";
 import { WorkoutTemplateEntity } from "./workout-template.entity";
 import { WorkoutTemplate } from "./workout-template.interfaces";
+import { OneToMany } from "typeorm";
+import { WorkoutEntity } from "../workout/workout.entity";
 
 @ObjectType('WorkoutTemplate')
 export class WorkoutTemplateType extends ModelTypeWithId<WorkoutTemplate> {
@@ -27,7 +29,7 @@ export class WorkoutTemplateType extends ModelTypeWithId<WorkoutTemplate> {
     @Field(type => String)
     title: string;
 
-    // @Field(type => [WorkoutTemplateExerciseType], {nullable: true})
-    // exercises: WorkoutTemplateExerciseType[];
+    @OneToMany(() => WorkoutEntity, workout => workout.template, { lazy: true })
+    workouts: WorkoutEntity[];
 
 }

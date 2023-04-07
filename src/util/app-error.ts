@@ -4,6 +4,7 @@ class AppError extends Error {
     status: string;
   
     constructor(messageOrError?: string | Error, statusCode?: number) {
+      console.log(messageOrError);
       if (messageOrError instanceof Error) {
         // Handle case where only one argument is provided and it's an Error instance.
         super(messageOrError.message);

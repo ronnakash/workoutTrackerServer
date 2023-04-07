@@ -89,6 +89,7 @@ export class ExistsJWTInterceptor implements NestInterceptor {
 @Injectable()
 export class ErrorsInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    console.log("req");
     return next
       .handle()
       .pipe(
