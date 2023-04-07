@@ -24,7 +24,7 @@ export class WorkoutEntity extends ModelEntityWithId<Workout> {
  
     @ManyToOne(() => UserEntity, user => user.workouts, { lazy: true })
     @JoinColumn()
-    author: Promise<UserEntity>;
+    author: UserEntity;
 
 
     @Column()
