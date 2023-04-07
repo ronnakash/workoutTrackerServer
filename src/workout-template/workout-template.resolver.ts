@@ -17,7 +17,7 @@ export class WorkoutTemplateResolver extends ModelsResolverWithId<WorkoutTemplat
 
     public constructor(
         private workoutService : WorkoutTemplateService,
-        private workoutExerciseService : WorkoutExerciseService
+        // private workoutExerciseService : WorkoutExerciseService
         ) {
             super(workoutService)
     }

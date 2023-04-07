@@ -3,7 +3,7 @@ import { WorkoutTemplateResolver } from './workout-template.resolver';
 import { WorkoutTemplateService } from './workout-template.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WorkoutTemplateEntity } from './workout-template.entity';
-import { ModelsModule } from 'src/models/models.module';
+import { ModelsModule } from '../models/models.module';
 import { WorkoutTemplate } from './workout-template.interfaces';
 
 @Module({
@@ -12,7 +12,9 @@ import { WorkoutTemplate } from './workout-template.interfaces';
       ],
   providers: [
     WorkoutTemplateResolver,
-    WorkoutTemplateService],
+    WorkoutTemplateService,
+    
+],
     exports: [
         TypeOrmModule,
     ],
