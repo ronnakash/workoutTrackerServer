@@ -1,10 +1,11 @@
 import { ModelEntity, ModelEntityWithId } from "../models/models.entity";
 import { User } from "./user.interfaces";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { ModelType } from "../models/models.type";
 import { UserType } from "./user.type";
+import { WorkoutEntity } from "../workout/workout.entity";
 
-@Entity('User', { name: 'postgres' })
+@Entity('user', { name: 'postgres' })
 export class UserEntity extends ModelEntityWithId<User> {    
 
     public constructor(model? : User) {
@@ -44,6 +45,9 @@ export class UserEntity extends ModelEntityWithId<User> {
 
     @Column()
     picture: string;
+
+    @OneToMany(() => WorkoutEntity, workout => workout.author, { lazy: true })
+    workouts: Promise<WorkoutEntity[]>;
 
 
     toType(): ModelType<User> {

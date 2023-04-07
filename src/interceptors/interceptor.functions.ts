@@ -66,7 +66,6 @@ export class GetJWTInterceptor implements NestInterceptor {
                 });
             });
         }
-  
         return next.handle();
         }
   }
@@ -90,7 +89,6 @@ export class ExistsJWTInterceptor implements NestInterceptor {
 @Injectable()
 export class ErrorsInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    console.log("ErrorsInterceptor")
     return next
       .handle()
       .pipe(

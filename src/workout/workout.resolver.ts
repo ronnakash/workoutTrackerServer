@@ -23,7 +23,7 @@ export class WorkoutResolver extends ModelsResolverWithId<Workout, WorkoutEntity
     }
 
     @Query( returns => [WorkoutType] )
-    @UseInterceptors(GetJWTInterceptor, ExistsJWTInterceptor, ValidateUserOrAdminInterceptor)
+    // @UseInterceptors(GetJWTInterceptor, ExistsJWTInterceptor, ValidateUserOrAdminInterceptor)
     async Workouts(@Context() context: any) {
         // return await this.getAll();
         const req: Request = context.req;

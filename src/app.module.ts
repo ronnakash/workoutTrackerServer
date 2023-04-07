@@ -13,13 +13,11 @@ import { WorkoutExerciseEntity } from './workout-exercise/workout-exercise.entit
 import { WorkoutEntity } from './workout/workout.entity';
 import * as dotenv from "dotenv";
 import * as path from "path";
-import { APP_FILTER } from '@nestjs/core';
 // import { HttpExceptionFilter } from './main';
 import { UserService } from './user/user.service';
-import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 import { WorkoutExerciseSetEntity } from './workout_exercise_set/workout-exercise-set.entity';
-import { WorkoutResolver } from './workout/workout.resolver';
+import { UserEntity } from './user/user.entity';
 
 dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
 
@@ -42,6 +40,7 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
         WorkoutExerciseEntity,
         WorkoutEntity,
         WorkoutExerciseSetEntity,
+        UserEntity
       ],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -59,14 +58,11 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
   providers: [
     AppService,
     UserService,
-    // {
-    //   provide: APP_FILTER,
-    //   useClass: HttpExceptionFilter,
-    // },
+
   ],
 })
 export class AppModule implements NestModule{
   configure(consumer: MiddlewareConsumer) {
-    // consumer.apply(ExistsJWTMiddleware, ValidateUserOrAdminMiddleware).forRoutes(WorkoutResolver)
+
   }
 }
