@@ -10,7 +10,7 @@ interface IEdgeType<T extends ModelBase> {
     node: T;
   }
   
-  export interface IPaginatedType<T extends ModelBase> {
+  export interface IPaginatedModel<T extends ModelBase> {
     edges: IEdgeType<T>[];
     nodes: T[];
     totalCount: number;

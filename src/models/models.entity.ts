@@ -1,5 +1,5 @@
 import { ObjectIdColumn, PrimaryGeneratedColumn } from "typeorm";
-import { IPaginatedType, ModelBase, ModelBaseWithId } from "./models.interfaces";
+import { IPaginatedModel, ModelBase, ModelBaseWithId } from "./models.interfaces";
 import { ModelType, ModelTypeWithId } from "./models.type";
 import { Field, ObjectType, Int } from '@nestjs/graphql';
 import { Type } from '@nestjs/common';
@@ -31,7 +31,7 @@ export abstract class ModelEntity<M extends ModelBase> {
 }
 
 
-export function PaginatedModel<T extends ModelBase>(classRef: Type<T>): Type<IPaginatedType<T>> {
+export function PaginatedModel<T extends ModelBase>(classRef: Type<T>): Type<IPaginatedModel<T>> {
   @ObjectType(`${classRef.name}Edge`)
   abstract class EdgeType {
     @Field((type) => String)
@@ -42,7 +42,7 @@ export function PaginatedModel<T extends ModelBase>(classRef: Type<T>): Type<IPa
   }
 
   @ObjectType({ isAbstract: true })
-  abstract class PaginatedType implements IPaginatedType<T> {
+  abstract class PaginatedModel implements IPaginatedModel<T> {
     @Field((type) => [EdgeType], { nullable: true })
     edges: EdgeType[];
 
@@ -55,5 +55,5 @@ export function PaginatedModel<T extends ModelBase>(classRef: Type<T>): Type<IPa
     @Field()
     hasNextPage: boolean;
   }
-  return PaginatedType as Type<IPaginatedType<T>>;
+  return PaginatedModel as Type<IPaginatedModel<T>>;
 }
