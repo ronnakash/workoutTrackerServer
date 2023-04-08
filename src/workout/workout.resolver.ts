@@ -27,17 +27,19 @@ export class WorkoutResolver extends ModelsResolverWithId<Workout, WorkoutEntity
     // @UseInterceptors(GetJWTInterceptor, ExistsJWTInterceptor, ValidateUserOrAdminInterceptor)
     async Workouts(@Context() context: any) {
         return (await this.getAll()).map(e => e.toType());
-        // const req: Request = context.req;
-        // console.log("req");
-        // const entities = await this.service.getWithRelations(undefined, ['exercises', 'exercises.sets', 'exercises.exercise']);
-        // const res1 = entities.map(e => e.toType());
-        // const res2 = res1.map(e => e as WorkoutType);
-        // return res1;
     }
     
     @ResolveField()
     async exercises(@Parent() workout: WorkoutType) {
         const w = (workout as unknown) as Workout;
+        // const res =  await this.workoutExerciseService.getAllBy({workout: w})
+        // console.log("workout:\n");
+        // console.log(workout);
+        // console.log("res:\n");
+        // console.log(res);
+        // const res : WorkoutExerciseType[] = [];  
+        // console.log(workout);
+        // return res;
         return await this.workoutExerciseService.getAllBy({workout: w})
     }
 

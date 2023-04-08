@@ -5,7 +5,7 @@ import { ModelType } from "../models/models.type";
 import { UserType } from "./user.type";
 import { WorkoutEntity } from "../workout/workout.entity";
 
-@Entity('user', { name: 'postgres' })
+@Entity('app_user', { name: 'postgres' })
 export class UserEntity extends ModelEntityWithId<User> {    
 
     public constructor(model? : User) {
