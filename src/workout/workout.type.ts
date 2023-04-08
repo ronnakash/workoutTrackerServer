@@ -26,7 +26,7 @@ export class WorkoutType extends ModelTypeWithId<Workout> implements Workout {
     @Field(type=> UserType)
     author : UserType;
 
-    @PrimaryGeneratedColumn('uuid')
+    @Field(type=> ID)
     _id: string;
 
     @Field(type => String)

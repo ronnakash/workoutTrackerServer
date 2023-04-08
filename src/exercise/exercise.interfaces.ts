@@ -16,16 +16,23 @@ export interface WeightedMuscle {
     workload: number,
 }
 
-export interface Exercise extends ModelBaseWithId {
+export interface ExerciseBase {
+    name?: string;
+    musclesWorked?: WeightedMuscle[];
+    workload?: number;
+}
+
+export interface Exercise extends ExerciseBase, ModelBaseWithId {
     name: string;
     musclesWorked: WeightedMuscle[];
     workload: number;
 }
 
+
 @InputType()
-export class ExerciseInput implements Exercise{
-    @Field()
-    _id: string;
+export class ExerciseInput implements ExerciseBase{
+    // @Field()
+    // _id?: string;
 
     @Field(() => [WeightedMuscleInput])
     musclesWorked: WeightedMuscleInput[];

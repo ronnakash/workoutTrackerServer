@@ -4,7 +4,7 @@ import { ExerciseEntity } from "./exercise.entity";
 import { ModelType, ModelTypeWithId } from "../models/models.type";
 import { PrimaryGeneratedColumn } from "typeorm";
 
-@ObjectType('Excercise')
+@ObjectType('Exercise')
 export class ExerciseType extends ModelTypeWithId<Exercise> {
 
     constructor(excerciseEntity : ExerciseEntity);
@@ -19,10 +19,10 @@ export class ExerciseType extends ModelTypeWithId<Exercise> {
         this.workload = exercise.workload;    
     }
 
-    @PrimaryGeneratedColumn('uuid')
+    @Field(type=> ID)
     _id: string;
 
-    @Field({nullable: true})
+    @Field()
     name: string;
 
     @Field(type => [WeightedMuscleType], {nullable: true})

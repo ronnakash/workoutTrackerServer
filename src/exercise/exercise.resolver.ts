@@ -23,7 +23,8 @@ export class ExerciseResolver extends ModelsResolver<Exercise>{
     async createExercise(
       @Args('exercise') exercise: ExerciseInput,
     ): Promise<ExerciseType> {
-      const newExercise = this.service.newEntity(exercise);
+        // exercise._id = "";
+      const newExercise = this.service.newEntity(exercise as Exercise);
       return newExercise.toType() as ExerciseType;
     }
 
