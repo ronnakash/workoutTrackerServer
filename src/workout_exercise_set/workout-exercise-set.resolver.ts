@@ -21,10 +21,12 @@ export class WorkoutExcerciseSetResolver extends ModelsResolver<WorkoutExerciseS
 
     @Mutation(() => WorkoutExerciseSetType)
     async createExercise(
-      @Args('exercise') exercise: WorkoutExerciseSetInput,
+        @Args('exercise') exercise: WorkoutExerciseSetInput,
     ): Promise<WorkoutExerciseSetType> {
-        return (await super.create(exercise)).toType() as WorkoutExerciseSetType;
+            return (await super.create(exercise)).toType() as WorkoutExerciseSetType;
     }
+
+
 
 }
   
