@@ -19,6 +19,8 @@ export class ExerciseService extends ModelServiceWithId<Exercise, ExerciseEntity
 
 
     newEntity(model: Exercise): ExerciseEntity {
+        // console.log("model");
+        // console.log(model);
         const e = new ExerciseEntity(model);
         this.repository.save(e);
         return e;
