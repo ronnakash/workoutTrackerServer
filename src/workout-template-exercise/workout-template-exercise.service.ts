@@ -5,6 +5,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { WorkoutExerciseEntity } from '../workout-exercise/workout-exercise.entity';
 import { Repository } from 'typeorm';
 import { WorkoutTemplateExerciseEntity } from './workout-template-exercise.entity';
+import { ModelEntity } from 'src/models/models.entity';
+import { throwIfEmpty } from 'rxjs';
 
 @Injectable()
 export class WorkoutTemplateExerciseService extends ModelService<WorkoutTemplateExercise, WorkoutTemplateExerciseEntity>{
@@ -14,7 +16,7 @@ export class WorkoutTemplateExerciseService extends ModelService<WorkoutTemplate
             super(exercisesRepository);
     }
 
-    newEntity(model: WorkoutTemplateExercise): WorkoutTemplateExerciseEntity {
+    newEntity(model: Partial<WorkoutTemplateExercise>): WorkoutTemplateExerciseEntity {
         const e = new WorkoutTemplateExerciseEntity(model);
         this.repository.save(e);
         return e;
@@ -23,6 +25,11 @@ export class WorkoutTemplateExerciseService extends ModelService<WorkoutTemplate
 
     async deleteOne(model: WorkoutExerciseEntity) {
         this.repository.softRemove(model);
+    }
+
+    async updateModel(model: Partial<WorkoutTemplateExercise>): Promise<ModelEntity<WorkoutTemplateExercise>> {
+        this.exercisesRepository.update({workout: model.workout, exercise: model.exercise}, {...model});
+        return await this.newEntity(model);
     }
 
 }

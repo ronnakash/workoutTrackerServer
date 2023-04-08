@@ -11,7 +11,7 @@ import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.enti
 export class ExerciseEntity extends ModelEntityWithId<Exercise> implements Exercise {
     
 
-    public constructor(model? : Exercise) {
+    public constructor(model? : Partial<Exercise>) {
         super();
         if (model){
             this.name = model.name;

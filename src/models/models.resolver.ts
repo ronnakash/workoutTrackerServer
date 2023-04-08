@@ -23,6 +23,11 @@ export abstract class ModelsResolver<M extends ModelBase, E extends ModelEntity<
         return newEntity;
     }
 
+    async update(input : ModelInput<M>) : Promise<E> {
+        const newEntity = this.service.newEntity(input); 
+        return newEntity;
+    }
+
 
 }
 
@@ -41,10 +46,5 @@ export abstract class ModelsResolverWithId<M extends ModelBaseWithId, E extends 
         // let result = entities.map(e => e.toType() as E);
         return entities;
     }
-
-    // async create(input : ModelInput<M>) : Promise<E> {
-    //     const newEntity = this.service.newEntity(input); 
-    //     return newEntity;
-    // }
 
 }

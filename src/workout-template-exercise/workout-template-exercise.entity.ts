@@ -12,7 +12,7 @@ import { WorkoutTemplateExerciseType } from "./workout-template-exercise.type";
 @Entity('workout_template_exercise', { name: 'postgres' })
 export class WorkoutTemplateExerciseEntity extends ModelEntity<WorkoutTemplateExercise>{
 
-    public constructor(model? : WorkoutTemplateExercise) {
+    public constructor(model? : Partial<WorkoutTemplateExercise>) {
         super();
         if (model) {
             this.exercise = new ExerciseEntity(model.exercise);

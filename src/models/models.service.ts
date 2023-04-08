@@ -37,10 +37,8 @@ export abstract class ModelService<M extends ModelBase, E extends ModelEntity<M>
         return (await this.repository.save(entity)) as E;
     }
 
-    // async updateModel(model: Partial<M>): Promise<ModelEntity<M>> {
-    //     await this.repository.update(model._id, {...model});
-    //     return await this.newEntity(model);
-    // }
+    abstract updateModel(model: Partial<M>): Promise<ModelEntity<M>> 
+    
 
     async deleteOne(model : E) : Promise<void> {
         await this.repository.softRemove(model);
@@ -78,7 +76,7 @@ export interface IModelService<M extends ModelBase, E extends ModelEntity<M>> {
     // getOneById(id : string) : Promise<ModelEntity<M>>;
     getOneBy(model: M) : Promise<E>;
     createModel(model: M): Promise<E> ;
-    // updateModel(model: M): Promise<ModelEntity<M>>;
+    updateModel(model: M): Promise<ModelEntity<M>>;
     deleteOne(model : ModelEntity<M>) : Promise<void>;
     // deleteOneById(id : string) : Promise<void>;
     newEntity(model : Partial<M>) : E;

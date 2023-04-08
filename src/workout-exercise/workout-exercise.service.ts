@@ -25,4 +25,9 @@ export class WorkoutExerciseService extends ModelService<WorkoutExercise, Workou
         this.repository.softRemove(model);
     }
 
+    updateModel(model: Partial<WorkoutExercise>): Promise<ModelEntity<WorkoutExercise>> {
+        throw new Error('Method not implemented.');
+    }
+
+
 }

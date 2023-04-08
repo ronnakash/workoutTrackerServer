@@ -9,7 +9,7 @@ import { WorkoutTemplateExerciseEntity } from "../workout-template-exercise/work
 @Entity('workout_template', { name: 'postgres' })
 export class WorkoutTemplateEntity extends ModelEntityWithId<WorkoutTemplate> {
 
-    public constructor(model? : WorkoutTemplate) {
+    public constructor(model? : Partial<WorkoutTemplate>) {
         super();
         if(model){
             this._id = model._id;

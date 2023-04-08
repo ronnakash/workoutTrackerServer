@@ -11,7 +11,7 @@ import { WorkoutExerciseSetEntity } from "../workout_exercise_set/workout-exerci
 @Entity('workout_exercise', { name: 'postgres' })
 export class WorkoutExerciseEntity extends ModelEntity<WorkoutExercise>{
 
-    public constructor(model? : WorkoutExercise) {
+    public constructor(model? : Partial<WorkoutExercise>) {
         super();
         if (model) {
             this.exercise = new ExerciseEntity(model.exercise);
