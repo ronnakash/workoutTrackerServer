@@ -13,11 +13,7 @@ export abstract class ModelService<M extends ModelBase, E extends ModelEntity<M>
     }
 
     async getAll() : Promise<E[]> {
-        return (await this.repository.find()).map(e => e.toType() as E);
-        // const entities = await this.repository.find();
-        // const res1 = entities.map(e => e.toType());
-        // const res2 = res1.map(e => e as E);
-        // return res2
+        return await this.repository.find() as E[];
     }
 
     async getWithRelations(model: Partial<M>, relations: string[]): Promise<E[]> {
@@ -50,12 +46,6 @@ export abstract class ModelService<M extends ModelBase, E extends ModelEntity<M>
         await this.repository.softRemove(model);
     }
 
-    // abstract deleteOne(model : E) : Promise<void>;
-
-    // async deleteOneById(id : string) : Promise<void> {
-    //     await this.repository.delete(id);
-    // }
-
     abstract newEntity(model : Partial<M>) : E;
 
 }
@@ -79,13 +69,9 @@ export abstract class ModelServiceWithId<M extends ModelBaseWithId, E extends Mo
         await this.repository.softRemove({_id: id});
     }
 
-    // async deleteOne(model: E) {
-    //     this.repository.softRemove(model);
-    // }
 }
 
 export interface IModelService<M extends ModelBase, E extends ModelEntity<M>> {
-
     
     getAll() : Promise<E[]>;
     getAllBy(model: M): Promise<E[]>;
@@ -104,21 +90,3 @@ export interface IModelServiceWithId<M extends ModelBaseWithId, E extends ModelE
     updateModel(model: Partial<M>): Promise<E>;
 }
 
-
-// export interface IModelService<M extends ModelBase, E extends ModelEntity<M>> {
-//     getAll() : Promise<ModelEntity<M> []>;
-//     getAllBy(model: M): Promise<ModelEntity<M>[]>;
-//     // getOneById(id : string) : Promise<ModelEntity<M>>;
-//     getOneBy(model: M) : Promise<ModelEntity<M>>;
-//     createModel(model: M): Promise<ModelEntity<M>> ;
-//     // updateModel(model: M): Promise<ModelEntity<M>>;
-//     deleteOne(model : ModelEntity<M>) : Promise<void>;
-//     // deleteOneById(id : string) : Promise<void>;
-//     newEntity(model : M) : ModelEntity<M>;
-// }
-
-// export interface IModelServiceWithId<M extends ModelBaseWithId> extends IModelService<M> {
-//     getOneById(id : string) : Promise<ModelEntityWithId<M>>;
-//     deleteOneById(id : string) : Promise<void>;
-//     updateModel(model: M): Promise<ModelEntityWithId<M>>;
-// }

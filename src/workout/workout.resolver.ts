@@ -10,6 +10,7 @@ import { WorkoutEntity } from './workout.entity';
 import { v4 as uuidv4 } from 'uuid';
 import { WorkoutExerciseService } from '../workout-exercise/workout-exercise.service';
 import { ExistsJWTInterceptor, GetJWTInterceptor, ValidateAdminTokenInterceptor, ValidateUserOrAdminInterceptor } from '../interceptors/interceptor.functions';
+import { User } from 'src/user/user.interfaces';
 
 @Resolver(of => WorkoutType)
 // @UseInterceptors(GetJWTInterceptor, ExistsJWTInterceptor, ValidateUserOrAdminInterceptor)
@@ -25,19 +26,19 @@ export class WorkoutResolver extends ModelsResolverWithId<Workout, WorkoutEntity
     @Query( returns => [WorkoutType] )
     // @UseInterceptors(GetJWTInterceptor, ExistsJWTInterceptor, ValidateUserOrAdminInterceptor)
     async Workouts(@Context() context: any) {
-        // return await this.getAll();
-        const req: Request = context.req;
-        console.log("req");
-        const entities = await this.service.getWithRelations(undefined, ['exercises', 'exercises.sets', 'exercises.exercise']);
-        const res1 = entities.map(e => e.toType());
+        return (await this.getAll()).map(e => e.toType());
+        // const req: Request = context.req;
+        // console.log("req");
+        // const entities = await this.service.getWithRelations(undefined, ['exercises', 'exercises.sets', 'exercises.exercise']);
+        // const res1 = entities.map(e => e.toType());
         // const res2 = res1.map(e => e as WorkoutType);
-        return res1;
+        // return res1;
     }
     
-    // @ResolveField()
-    // async exercises(@Parent() workout: WorkoutType) {
-    //     const { _id } = workout;
-    //     return await this.workoutExerciseService.getAllBy({})
-    // }
+    @ResolveField()
+    async exercises(@Parent() workout: WorkoutType) {
+        const w = (workout as unknown) as Workout;
+        return await this.workoutExerciseService.getAllBy({workout: w})
+    }
 
 }

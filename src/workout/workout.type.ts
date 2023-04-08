@@ -5,9 +5,10 @@ import { WorkoutExerciseType } from "../workout-exercise/workout-exercise.type";
 import { WorkoutEntity } from "./workout.entity";
 import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.entity";
 import { WorkoutExercise } from "../workout-exercise/workout-exercise.interfaces";
+import { UserType } from "../user/user.type";
 
 @ObjectType('Workout')
-export class WorkoutType extends ModelTypeWithId<Workout> {
+export class WorkoutType extends ModelTypeWithId<Workout> implements Workout {
 
     constructor(workoutEntity: WorkoutEntity);
     constructor(workout: Workout);
@@ -17,12 +18,12 @@ export class WorkoutType extends ModelTypeWithId<Workout> {
         this._id = workout._id;
         this.title = workout.title;
         // workout.exercises.forEach(e => console.log(e));
-        this.authourId = workout.author._id
+        this.author = new UserType(workout.author);
         this.exercises = workout.exercises?.map( (e : WorkoutExerciseEntity | WorkoutExercise )=> new WorkoutExerciseType(e));    
     }
 
-    @Field(type=> ID)
-    authourId : string;
+    @Field(type=> UserType)
+    author : UserType;
 
     @Field(type => ID)
     _id: string;

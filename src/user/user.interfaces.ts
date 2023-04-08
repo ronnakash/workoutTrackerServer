@@ -26,18 +26,20 @@ export interface UserProps extends UserLoginProps{
     email : string;
     password?: string;
     permissions?: string;
-    googleLogin?: Boolean;
+    googleLogin?: boolean;
     picture?: string;
     googleAccessToken?: string;
 }
 
 export interface User extends UserProps, ModelBaseWithId{
-    password: string;
     permissions: string;
     passwordChangedAt: number;
-    googleLogin: Boolean;
+    googleLogin: boolean;
     picture: string;
 }
 
+export interface UserWithPassword extends User{
+    password: string;
+}
 
 

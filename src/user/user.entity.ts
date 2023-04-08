@@ -41,7 +41,7 @@ export class UserEntity extends ModelEntityWithId<User> {
     passwordChangedAt: number;    
 
     @Column()
-    googleLogin: Boolean;    
+    googleLogin: boolean;    
 
     @Column()
     picture: string;

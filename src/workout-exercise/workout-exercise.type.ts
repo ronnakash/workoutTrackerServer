@@ -6,9 +6,10 @@ import { WorkoutExerciseEntity } from "./workout-exercise.entity";
 import { WorkoutExerciseSetType } from "../workout_exercise_set/workout-exercise-set.type";
 import { WorkoutExerciseSet } from "../workout_exercise_set/workout-exercise-set.interfaces";
 import { WorkoutExerciseSetEntity } from "../workout_exercise_set/workout-exercise-set.entity";
+import { WorkoutType } from "../workout/workout.type";
 
 @ObjectType('WorkoutExcercise')
-export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
+export class WorkoutExerciseType extends ModelType<WorkoutExercise> implements WorkoutExercise {
     
     constructor(workoutExerciseEntity: WorkoutExerciseEntity);
     constructor(workoutExercise: WorkoutExercise);
@@ -27,4 +28,6 @@ export class WorkoutExerciseType extends ModelType<WorkoutExercise> {
     @Field(type => [WorkoutExerciseSetType], {nullable: true})
     sets:  WorkoutExerciseSetType[]
 
+    @Field(type => [WorkoutType], {nullable: true})
+    workout: WorkoutType;
 }
