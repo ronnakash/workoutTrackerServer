@@ -1,14 +1,14 @@
 import { Resolver } from '@nestjs/graphql';
-import { ModelBase, ModelBaseWithId } from './models.interfaces';
+import { ModelBase, ModelBaseWithId, ModelInput } from './models.interfaces';
 import { ModelEntity, ModelEntityWithId } from './models.entity';
 import { IModelService, IModelServiceWithId, ModelServiceWithId } from './models.service';
 import { ModelType } from './models.type';
 
 @Resolver()
-export abstract class ModelsResolver<M extends ModelBase> {
-    service : IModelService<M, ModelEntity<M>>;
+export abstract class ModelsResolver<M extends ModelBase, E extends ModelEntity<M>> {
+    service : IModelService<M, E>;
 
-    protected constructor(service : IModelService<M, ModelEntity<M>>) {
+    protected constructor(service : IModelService<M, E>) {
         this.service = service;
     }
 
@@ -18,15 +18,22 @@ export abstract class ModelsResolver<M extends ModelBase> {
         return entities;
     }
 
+    async create(input : ModelInput<M>) : Promise<E> {
+        const newEntity = this.service.newEntity(input); 
+        return newEntity;
+    }
+
+
 }
 
 
 @Resolver()
-export abstract class ModelsResolverWithId<M extends ModelBaseWithId, E extends ModelEntityWithId<M>> {
+export abstract class ModelsResolverWithId<M extends ModelBaseWithId, E extends ModelEntityWithId<M>>
+        extends ModelsResolver<M, E> {
     service : ModelServiceWithId<M, E>;
 
     protected constructor(service : ModelServiceWithId<M, E>) {
-        this.service = service;
+        super(service);
     }
 
     async getAll(): Promise<E[]> {
@@ -35,5 +42,9 @@ export abstract class ModelsResolverWithId<M extends ModelBaseWithId, E extends 
         return entities;
     }
 
+    async create(input : ModelInput<M>) : Promise<E> {
+        const newEntity = this.service.newEntity(input); 
+        return newEntity;
+    }
 
 }

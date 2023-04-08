@@ -10,9 +10,13 @@ interface IEdgeType<T extends ModelBase> {
     node: T;
   }
   
-  export interface IPaginatedModel<T extends ModelBase> {
+export interface IPaginatedModel<T extends ModelBase> {
     edges: IEdgeType<T>[];
     nodes: T[];
     totalCount: number;
     hasNextPage: boolean;
-  }
+}
+
+export interface ModelInput<M extends ModelBase> {
+  
+}

@@ -5,9 +5,10 @@ import { ModelsResolver } from "../models/models.resolver";
 import { ExerciseEntity } from "./exercise.entity";
 import { ExerciseService } from "./exercise.service";
 import { ModelType } from "../models/models.type";
+import { create } from "domain";
 
 @Resolver(of => ExerciseType)
-export class ExerciseResolver extends ModelsResolver<Exercise>{
+export class ExerciseResolver extends ModelsResolver<Exercise, ExerciseEntity>{
     
     public constructor(
             private excercisesService : ExerciseService) {
@@ -23,9 +24,7 @@ export class ExerciseResolver extends ModelsResolver<Exercise>{
     async createExercise(
       @Args('exercise') exercise: ExerciseInput,
     ): Promise<ExerciseType> {
-        // exercise._id = "";
-      const newExercise = this.service.newEntity(exercise as Exercise);
-      return newExercise.toType() as ExerciseType;
+        return (await super.create(exercise)).toType() as ExerciseType;
     }
 
 }

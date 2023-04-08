@@ -1,5 +1,5 @@
 import { Field, InputType, Int } from "@nestjs/graphql";
-import { ModelBase, ModelBaseWithId } from "../models/models.interfaces";
+import { ModelBase, ModelBaseWithId, ModelInput } from "../models/models.interfaces";
 
 export enum Muscle {
     Chest, 
@@ -30,9 +30,7 @@ export interface Exercise extends ExerciseBase, ModelBaseWithId {
 
 
 @InputType()
-export class ExerciseInput implements ExerciseBase{
-    // @Field()
-    // _id?: string;
+export class ExerciseInput implements ExerciseBase, ModelInput<Exercise>{
 
     @Field(() => [WeightedMuscleInput])
     musclesWorked: WeightedMuscleInput[];
