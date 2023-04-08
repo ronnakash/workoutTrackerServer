@@ -6,6 +6,7 @@ import { WorkoutEntity } from "./workout.entity";
 import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.entity";
 import { WorkoutExercise } from "../workout-exercise/workout-exercise.interfaces";
 import { UserType } from "../user/user.type";
+import { PrimaryGeneratedColumn } from "typeorm";
 
 @ObjectType('Workout')
 export class WorkoutType extends ModelTypeWithId<Workout> implements Workout {
@@ -25,7 +26,7 @@ export class WorkoutType extends ModelTypeWithId<Workout> implements Workout {
     @Field(type=> UserType)
     author : UserType;
 
-    @Field(type => ID)
+    @PrimaryGeneratedColumn('uuid')
     _id: string;
 
     @Field(type => String)

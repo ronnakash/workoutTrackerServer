@@ -2,6 +2,7 @@ import { ObjectType, Field, ID } from "@nestjs/graphql";
 import { Exercise, Muscle, WeightedMuscle } from "./exercise.interfaces";
 import { ExerciseEntity } from "./exercise.entity";
 import { ModelType, ModelTypeWithId } from "../models/models.type";
+import { PrimaryGeneratedColumn } from "typeorm";
 
 @ObjectType('Excercise')
 export class ExerciseType extends ModelTypeWithId<Exercise> {
@@ -18,7 +19,7 @@ export class ExerciseType extends ModelTypeWithId<Exercise> {
         this.workload = exercise.workload;    
     }
 
-    @Field(type => ID, {nullable: true})
+    @PrimaryGeneratedColumn('uuid')
     _id: string;
 
     @Field({nullable: true})

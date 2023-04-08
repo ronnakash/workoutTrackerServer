@@ -2,6 +2,7 @@ import { Field, ID, ObjectType } from "@nestjs/graphql";
 import { ModelType, ModelTypeWithId } from "../models/models.type";
 import { User } from "./user.interfaces";
 import { UserEntity } from "./user.entity";
+import { PrimaryGeneratedColumn } from "typeorm";
 
 @ObjectType('User')
 export class UserType extends ModelTypeWithId<User> {
@@ -23,7 +24,7 @@ export class UserType extends ModelTypeWithId<User> {
     }
 
 
-    @Field(type => ID)
+    @PrimaryGeneratedColumn('uuid')
     _id: string;
 
     @Field()
