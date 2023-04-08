@@ -15,7 +15,7 @@ export class WorkoutExerciseService extends ModelService<WorkoutExercise, Workou
             super(exercisesRepository);
     }
 
-    newEntity(model: WorkoutExercise): WorkoutExerciseEntity {
+    newEntity(model: Partial<WorkoutExercise>): WorkoutExerciseEntity {
         const e = new WorkoutExerciseEntity(model);
         this.repository.save(e);
         return e;
@@ -25,8 +25,9 @@ export class WorkoutExerciseService extends ModelService<WorkoutExercise, Workou
         this.repository.softRemove(model);
     }
 
-    updateModel(model: Partial<WorkoutExercise>): Promise<ModelEntity<WorkoutExercise>> {
-        throw new Error('Method not implemented.');
+    async updateModel(model: Partial<WorkoutExercise>): Promise<ModelEntity<WorkoutExercise>> {
+        this.exercisesRepository.update({workout: model.workout, exercise: model.exercise}, {...model});
+        return await this.newEntity(model);
     }
 
 
