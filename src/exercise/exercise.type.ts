@@ -15,7 +15,7 @@ export class ExerciseType extends ModelTypeWithId<Exercise> {
         super();
         this._id = exercise._id;
         this.name = exercise.name;
-        // this.musclesWorked = e.musclesWorked;
+        this.musclesWorked = exercise.musclesWorked;
         this.workload = exercise.workload;    
     }
 

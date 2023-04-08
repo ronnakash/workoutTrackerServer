@@ -16,7 +16,7 @@ export class ExerciseEntity extends ModelEntityWithId<Exercise> {
         if (model){
             this.name = model.name;
             this.workload = model.workload;
-            // this.musclesWorked = model.musclesWorked;
+            this.musclesWorked = model.musclesWorked;
         }
     }
     
@@ -32,8 +32,8 @@ export class ExerciseEntity extends ModelEntityWithId<Exercise> {
     // @ManyToMany(() => WorkoutEntity, workout => workout.exercises)
     // workouts: WorkoutEntity[];  
 
-    // @Column({ type: 'json', array: false, nullable: true })
-    // musclesWorked: WeightedMuscle[];
+    @Column({ type: 'json', array: false, nullable: true })
+    musclesWorked: WeightedMuscle[];
 
     @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout)
     exercises: WorkoutExerciseEntity[];

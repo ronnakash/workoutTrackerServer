@@ -27,7 +27,7 @@ export interface WeightedMuscle {
 
 export interface Exercise extends ModelBaseWithId {
     name: string;
-    // musclesWorked: WeightedMuscle[];
+    musclesWorked: WeightedMuscle[];
     workload: number;
 }
 
