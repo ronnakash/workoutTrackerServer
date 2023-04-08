@@ -36,7 +36,7 @@ lerna-debug.log*
 .vercel
 
 # dotenv
-
 .env
 
-# graphql
+# temp
+src/tmp
