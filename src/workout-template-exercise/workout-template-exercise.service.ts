@@ -15,7 +15,10 @@ export class WorkoutTemplateExerciseService extends ModelService<WorkoutTemplate
     }
 
     newEntity(model: WorkoutTemplateExercise): WorkoutTemplateExerciseEntity {
-        return new WorkoutTemplateExerciseEntity(model);
+        const e = new WorkoutTemplateExerciseEntity(model);
+        this.repository.save(e);
+        return e;
+
     }
 
     async deleteOne(model: WorkoutExerciseEntity) {

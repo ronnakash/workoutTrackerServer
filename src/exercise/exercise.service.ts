@@ -19,7 +19,9 @@ export class ExerciseService extends ModelServiceWithId<Exercise, ExerciseEntity
 
 
     newEntity(model: Exercise): ExerciseEntity {
-        return new ExerciseEntity(model);
+        const e = new ExerciseEntity(model);
+        this.repository.save(e);
+        return e;
     }
 
 

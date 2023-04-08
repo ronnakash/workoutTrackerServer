@@ -8,7 +8,7 @@ import { WorkoutEntity } from "../workout/workout.entity";
 import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.entity";
 
 @Entity('exercise', { name: 'postgres' })
-export class ExerciseEntity extends ModelEntityWithId<Exercise> {
+export class ExerciseEntity extends ModelEntityWithId<Exercise> implements Exercise {
     
 
     public constructor(model? : Exercise) {

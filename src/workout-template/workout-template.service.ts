@@ -15,7 +15,9 @@ export class WorkoutTemplateService extends ModelServiceWithId<WorkoutTemplate, 
     }
 
     newEntity(model: WorkoutTemplate): WorkoutTemplateEntity {
-        return new WorkoutTemplateEntity(model);
+        const e = new WorkoutTemplateEntity(model);
+        this.repository.save(e);
+        return e;
     }
 
 }

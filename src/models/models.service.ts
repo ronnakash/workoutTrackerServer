@@ -81,7 +81,7 @@ export interface IModelService<M extends ModelBase, E extends ModelEntity<M>> {
     // updateModel(model: M): Promise<ModelEntity<M>>;
     deleteOne(model : ModelEntity<M>) : Promise<void>;
     // deleteOneById(id : string) : Promise<void>;
-    newEntity(model : M) : ModelEntity<E>;
+    newEntity(model : M) : E;
 }
 
 export interface IModelServiceWithId<M extends ModelBaseWithId, E extends ModelEntityWithId<M>> extends IModelService<M, E> {
