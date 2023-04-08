@@ -40,4 +40,4 @@ lerna-debug.log*
 
 # temp
 src/tmp
-tmp
+tmp/*
