@@ -45,7 +45,7 @@ dotenv.config({ path: path.join(process.cwd()+"/src/", ".env") });
       ],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
-      autoSchemaFile: './tmp/schema.gql',
+      autoSchemaFile: '/tmp/schema.gql',
       driver: ApolloDriver,
       debug: process.env.ENVIRONMENT !== 'dev',
       playground: process.env.ENVIRONMENT == 'dev',
