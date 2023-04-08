@@ -42,9 +42,9 @@ export abstract class ModelsResolverWithId<M extends ModelBaseWithId, E extends 
         return entities;
     }
 
-    async create(input : ModelInput<M>) : Promise<E> {
-        const newEntity = this.service.newEntity(input); 
-        return newEntity;
-    }
+    // async create(input : ModelInput<M>) : Promise<E> {
+    //     const newEntity = this.service.newEntity(input); 
+    //     return newEntity;
+    // }
 
 }
