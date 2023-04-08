@@ -26,7 +26,7 @@ export class WorkoutInput implements WorkoutBase, ModelInput<Workout>{
     @Field()
     title: string;
     
-    @Field()
+    @Field(type => [WorkoutExerciseInput])
     exercises: WorkoutExerciseInput[];
 
 }

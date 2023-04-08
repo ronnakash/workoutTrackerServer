@@ -1,12 +1,12 @@
-import { Workout } from "../workout/workout.interfaces";
+import { Workout, WorkoutBase, WorkoutInput } from "../workout/workout.interfaces";
 import { Exercise, ExerciseBase, ExerciseInput } from "../exercise/exercise.interfaces";
 import { ModelBase, ModelInput } from "../models/models.interfaces";
-import { WorkoutExerciseSet } from "../workout_exercise_set/workout-exercise-set.interfaces";
+import { WorkoutExerciseSet, WorkoutExerciseSetInput } from "../workout_exercise_set/workout-exercise-set.interfaces";
 import { Field, InputType } from "@nestjs/graphql";
 
 export interface WorkoutExerciseBase {
     exercise: ExerciseBase;
-    workout: Workout;
+    workout: WorkoutBase;
     sets: WorkoutExerciseSet[];
 }
 
@@ -21,10 +21,10 @@ export class WorkoutExerciseInput implements WorkoutExerciseBase, ModelInput<Wor
     @Field()
     exercise: ExerciseInput;
     
-    @Field()
-    workout: Workout;
+    @Field(type => [WorkoutInput])
+    workout: WorkoutInput;
     
-    @Field()
-    sets: WorkoutExerciseSet[];
+    @Field(type => [WorkoutExerciseSetInput])
+    sets: WorkoutExerciseSetInput[];
 
 }
