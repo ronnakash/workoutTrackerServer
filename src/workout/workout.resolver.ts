@@ -26,26 +26,21 @@ export class WorkoutResolver extends ModelsResolverWithId<Workout, WorkoutEntity
     @Query( returns => [WorkoutType] )
     // @UseInterceptors(GetJWTInterceptor, ExistsJWTInterceptor, ValidateUserOrAdminInterceptor)
     async Workouts(@Context() context: any) {
-        return (await this.getAll()).map(e => e.toType());
+        // return (await this.getAll()).map(e => e.toType());
+        const entities = await this.service.getWithRelations({}, ['exercises', 'exercises.sets', 'exercises.exercise']);
+        const res = entities.map(e => e.toType());
+        return res;
     }
     
     @ResolveField()
     async exercises(@Parent() workout: WorkoutType) {
         const w = (workout as unknown) as Workout;
-        // const res =  await this.workoutExerciseService.getAllBy({workout: w})
-        // console.log("workout:\n");
-        // console.log(workout);
-        // console.log("res:\n");
-        // console.log(res);
-        // const res : WorkoutExerciseType[] = [];  
-        // console.log(workout);
-        // return res;
         return await this.workoutExerciseService.getAllBy({workout: w})
     }
 
     @Mutation(() => WorkoutType)
-    async createExercise(
-      @Args('exercise') workout: WorkoutInput,
+    async createWorkout(
+      @Args('workout') workout: WorkoutInput,
     ): Promise<WorkoutType> {
         return (await super.create(workout)).toType() as WorkoutType;
     }

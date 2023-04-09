@@ -28,7 +28,7 @@ export class WorkoutTemplateResolver extends ModelsResolverWithId<WorkoutTemplat
         // return await this.getAll();
         const req: Request = context.req;
 
-        const entities = await this.service.getWithRelations(undefined, ['exercises', 'exercises.sets', 'exercises.exercise']);
+        const entities = await this.service.getWithRelations({}, ['exercises', 'exercises.sets', 'exercises.exercise']);
         const res1 = entities.map(e => e.toType());
         // const res2 = res1.map(e => e as WorkoutTemplateType);
         return res1;
@@ -36,8 +36,8 @@ export class WorkoutTemplateResolver extends ModelsResolverWithId<WorkoutTemplat
     
     @Mutation(() => WorkoutTemplateType)
     async createWorkoutTemplate(
-      @Args('exercise') exercise: WorkoutTemplateInput,
+      @Args('workout') workout: WorkoutTemplateInput,
     ): Promise<WorkoutTemplateType> {
-        return (await super.create(exercise)).toType() as WorkoutTemplateType;
+        return (await super.create(workout)).toType() as WorkoutTemplateType;
     }
 }

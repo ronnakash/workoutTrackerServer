@@ -77,6 +77,7 @@ export interface IModelService<M extends ModelBase, E extends ModelEntity<M>> {
     getOneBy(model: M) : Promise<E>;
     createModel(model: M): Promise<E> ;
     updateModel(model: M): Promise<ModelEntity<M>>;
+    getWithRelations(model: Partial<M>, relations: string[]): Promise<E[]>
     deleteOne(model : ModelEntity<M>) : Promise<void>;
     // deleteOneById(id : string) : Promise<void>;
     newEntity(model : Partial<M>) : E;

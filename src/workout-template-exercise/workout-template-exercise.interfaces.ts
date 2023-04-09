@@ -1,8 +1,7 @@
 import { Exercise, ExerciseBase, ExerciseInput } from "../exercise/exercise.interfaces";
-import { WorkoutExerciseSet } from "../workout_exercise_set/workout-exercise-set.interfaces";
 import { WorkoutTemplate, WorkoutTemplateBase, WorkoutTemplateInput } from "../workout-template/workout-template.interfaces";
 import { Field, InputType, ObjectType } from "@nestjs/graphql";
-import { ModelBase, ModelBaseWithId, ModelInput } from "../models/models.interfaces";
+import { ModelBase, ModelInput } from "../models/models.interfaces";
 
 export interface WorkoutTemplateExerciseBase  {
     exercise: ExerciseBase;
@@ -20,9 +19,7 @@ export interface WorkoutTemplateExercise extends ModelBase, WorkoutTemplateExerc
 export class WorkoutTemplateExerciseInput
     implements WorkoutTemplateExerciseBase, ModelInput<WorkoutTemplateExercise>{
 
-    constructor(reps: number, rpe: number, weight: number) {
 
-    }
     @Field(type => ExerciseInput, {nullable: true})
     exercise: ExerciseInput;
 

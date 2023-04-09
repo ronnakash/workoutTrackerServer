@@ -5,13 +5,17 @@ import { WorkoutExercise, WorkoutExerciseInput } from './workout-exercise.interf
 import { WorkoutExerciseService } from './workout-exercise.service';
 import { WorkoutType } from '../workout/workout.type';
 import { WorkoutExerciseEntity } from './workout-exercise.entity';
+import { ExerciseService } from '../exercise/exercise.service';
+import { ExerciseType } from 'src/exercise/exercise.type';
 
 @Resolver()
 export class WorkoutExerciseResolver extends ModelsResolver<WorkoutExercise, WorkoutExerciseEntity> {
     
     public constructor(
-        private workoutExercisesService : WorkoutExerciseService) {
-            super(workoutExercisesService)
+        private workoutExerciseService : WorkoutExerciseService,
+        private exerciseService : ExerciseService
+        ) {
+            super(workoutExerciseService)
     }
     @Query( returns => [WorkoutExerciseType] )
     WorkoutExcercises() {
@@ -20,9 +24,15 @@ export class WorkoutExerciseResolver extends ModelsResolver<WorkoutExercise, Wor
 
     @Mutation(() => WorkoutExerciseType)
     async createWorkoutExercise(
-      @Args('exercise') exercise: WorkoutExerciseInput,
+      @Args('workoutExercise') workoutExercise: WorkoutExerciseInput,
     ): Promise<WorkoutExerciseType> {
-        return (await super.create(exercise)).toType() as WorkoutExerciseType;
+        return (await super.create(workoutExercise)).toType() as WorkoutExerciseType;
     }
+
+    // @ResolveField(() => ExerciseType)
+    // async exercises(@Parent() workoutExercise: WorkoutExerciseType) {
+    //     const w = (workoutExercise as unknown) as WorkoutExercise;
+    //     return await this.exerciseService.getAllBy({exercise: w.exercise})
+    // }
 
 }

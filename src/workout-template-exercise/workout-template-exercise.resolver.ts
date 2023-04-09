@@ -1,6 +1,6 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ModelsResolver } from '../models/models.resolver';
-import { WorkoutTemplateExercise } from './workout-template-exercise.interfaces';
+import { WorkoutTemplateExercise, WorkoutTemplateExerciseInput } from './workout-template-exercise.interfaces';
 import { WorkoutTemplateExerciseService } from './workout-template-exercise.service';
 import { WorkoutTemplateExerciseType } from './workout-template-exercise.type';
 import { WorkoutTemplateExerciseEntity } from './workout-template-exercise.entity';
@@ -16,6 +16,12 @@ export class WorkoutTemplateExerciseResolver extends ModelsResolver<WorkoutTempl
     WorkoutTemplateExcercises() {
         return this.getAll();
     }
-
+    
+    @Mutation(() => WorkoutTemplateExerciseType)
+    async createWorkoutExercise(
+      @Args('workoutExercise') workoutExercise: WorkoutTemplateExerciseInput,
+    ): Promise<WorkoutTemplateExerciseType> {
+        return (await super.create(workoutExercise)).toType() as WorkoutTemplateExerciseType;
+    }
 
 }
