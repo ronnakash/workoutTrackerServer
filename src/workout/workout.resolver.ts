@@ -1,4 +1,4 @@
-import { Args, Context, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Args, Context, ID, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { WorkoutType } from './workout.type';
 import { WorkoutExerciseType } from '../workout-exercise/workout-exercise.type';
 import { ModelsResolver, ModelsResolverWithId } from '../models/models.resolver';
@@ -46,10 +46,23 @@ export class WorkoutResolver extends ModelsResolverWithId<Workout, WorkoutEntity
         return (await super.create(workout)).toType() as WorkoutType;
     }
 
+    // @Mutation(() => WorkoutType)
+    // async createWorkout(
+    //   @Args('workout') workout: WorkoutInput,
+    //   @Args('exerciseIds', { type: () => [ID] }) exerciseIds: string[],
+    // ): Promise<WorkoutType> {
+    //     const exercises = exerciseIds.map(id => ({ exerciseId: id, sets: [] }));
+    //     const workoutInput = { ...workout, exercises };
+    //     return (await super.create(workoutInput)).toType() as WorkoutType;
+    // }
+    
+
+    
     @Mutation(() => WorkoutType)
     async updateWorkout(
       @Args('workout') workout: WorkoutInput,
     ): Promise<WorkoutType> {
         return (await super.create(workout)).toType() as WorkoutType;
     }
+
 }

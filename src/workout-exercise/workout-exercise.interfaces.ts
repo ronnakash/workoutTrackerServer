@@ -1,12 +1,12 @@
 import { Workout, WorkoutBase } from "../workout/workout.interfaces";
 import { Exercise, ExerciseBase } from "../exercise/exercise.interfaces";
 import { ModelBase } from "../models/models.interfaces";
-import { WorkoutExerciseSet, WorkoutExerciseSetInput } from "../workout_exercise_set/workout-exercise-set.interfaces";
+import { WorkoutExerciseSet } from "../workout_exercise_set/workout-exercise-set.interfaces";
 
 export interface WorkoutExerciseBase {
-    exercise: ExerciseBase;
-    workout: WorkoutBase;
-    sets: WorkoutExerciseSet[];
+    exercise?: ExerciseBase;
+    workout?: WorkoutBase;
+    sets?: WorkoutExerciseSet[];
 }
 
 export interface WorkoutExercise extends WorkoutExerciseBase, ModelBase {

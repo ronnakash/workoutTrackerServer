@@ -11,14 +11,20 @@ export enum Muscle {
     Calves,
 }
 
-export interface WeightedMuscle {
+export interface WeightedMuscleBase {
+    muscle?: string,
+    workload?: number,
+}
+
+
+export interface WeightedMuscle extends WeightedMuscleBase{
     muscle: string,
     workload: number,
 }
 
 export interface ExerciseBase {
     name?: string;
-    musclesWorked?: WeightedMuscle[];
+    musclesWorked?: WeightedMuscleBase[];
     workload?: number;
 }
 

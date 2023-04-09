@@ -1,15 +1,18 @@
-import { Field, InputType } from "@nestjs/graphql";
-import { Exercise, ExerciseBase, WeightedMuscle } from "./exercise.interfaces";
-import { ModelInput } from "../models/models.input";
+import { Field, ID, InputType } from "@nestjs/graphql";
+import { Exercise, ExerciseBase, WeightedMuscle, WeightedMuscleBase } from "./exercise.interfaces";
+import { ModelInput, ModelInputWithId } from "../models/models.input";
 
 @InputType()
-export class ExerciseInput implements ExerciseBase, ModelInput<Exercise>{
+export class ExerciseInput implements ExerciseBase, ModelInputWithId<Exercise>{
 
-    @Field(() => [WeightedMuscleInput])
-    musclesWorked: WeightedMuscleInput[];
+    @Field(() => [WeightedMuscleInput], {nullable: "itemsAndList"})
+    musclesWorked?: WeightedMuscleInput[];
+
+    @Field(type=> ID, {nullable: true})
+    _id?: string;
     
-    @Field()
-    workload: number;
+    @Field({nullable: true})
+    workload?: number;
 
     @Field()
     name: string;
@@ -17,11 +20,11 @@ export class ExerciseInput implements ExerciseBase, ModelInput<Exercise>{
 
 
 @InputType()
-export class WeightedMuscleInput implements WeightedMuscle{
+export class WeightedMuscleInput implements WeightedMuscleBase{
     
-    @Field()
-    workload: number;
+    @Field({nullable: true})
+    workload?: number;
 
-    @Field()
-    muscle: string;
+    @Field({nullable: true})
+    muscle?: string;
 }
