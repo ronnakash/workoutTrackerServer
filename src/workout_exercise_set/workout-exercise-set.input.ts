@@ -1,20 +1,20 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { WorkoutExerciseSet } from "./workout-exercise-set.interfaces";
-import { ModelInput } from "src/models/models.input";
+import { WorkoutExerciseSet, WorkoutExerciseSetBase } from "./workout-exercise-set.interfaces";
+import { ModelInput } from "../models/models.input";
 
-@InputType()
-export class WorkoutExerciseSetInput implements WorkoutExerciseSet, ModelInput<WorkoutExerciseSet>{
+@InputType('workoutExerciseSetInput')
+export class WorkoutExerciseSetInput implements WorkoutExerciseSetBase, ModelInput<WorkoutExerciseSet>{
     
     @Field({nullable: true})
-    setNumber: number;
+    setNumber?: number;
     
     @Field({nullable: true})
-    reps: number;
+    reps?: number;
     
     @Field({nullable: true})
-    rpe: number;
+    rpe?: number;
     
     @Field({nullable: true})
-    weight: number;
+    weight?: number;
 
 }

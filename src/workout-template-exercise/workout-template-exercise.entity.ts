@@ -7,8 +7,8 @@ import { ExerciseEntity } from "../exercise/exercise.entity";
 import { WorkoutExerciseSetEntity } from "../workout_exercise_set/workout-exercise-set.entity";
 import { WorkoutTemplateExercise } from "./workout-template-exercise.interfaces";
 import { WorkoutTemplateEntity } from "../workout-template/workout-template.entity";
-import { WorkoutTemplateExerciseType } from "./workout-template-exercise.type";
-import { WorkoutTemplateExerciseSet, WorkoutTemplateExerciseSetTransformer } from "./workout-template-exercise.input";
+import { WorkoutTemplateExerciseSet, WorkoutTemplateExerciseType } from "./workout-template-exercise.type";
+import { WorkoutTemplateExerciseSetTransformer } from "./workout-template-exercise.input";
 
 @Entity('workout_template_exercise', { name: 'postgres' })
 export class WorkoutTemplateExerciseEntity extends ModelEntity<WorkoutTemplateExercise>{

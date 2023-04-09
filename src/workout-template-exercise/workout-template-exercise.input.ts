@@ -3,8 +3,9 @@ import { WorkoutTemplateExercise, WorkoutTemplateExerciseBase, WorkoutTemplateEx
 import { ExerciseInput } from "../exercise/exercise.input";
 import { WorkoutTemplateInput } from "../workout-template/workout-template.input";
 import { ModelInput } from "../models/models.input";
+import { WorkoutTemplateExerciseSet } from "./workout-template-exercise.type";
 
-@InputType()
+@InputType('workoutTemplateExerciseInput')
 export class WorkoutTemplateExerciseInput
     implements WorkoutTemplateExerciseBase, ModelInput<WorkoutTemplateExercise>{
 
@@ -20,26 +21,26 @@ export class WorkoutTemplateExerciseInput
     
 }
 
+// @ObjectType()
+// export class WorkoutTemplateExerciseSet 
+//     implements WorkoutTemplateExerciseSetBase{
 
-@ObjectType()
-export class WorkoutTemplateExerciseSet 
-    implements WorkoutTemplateExerciseSetBase{
-
-    constructor(reps: number, rpe: number, weight: number) {
-        this.reps = reps;
-        this.rpe = rpe;
-        this.weight = weight;
-    }
+//     constructor(reps: number, rpe: number, weight: number) {
+//         this.reps = reps;
+//         this.rpe = rpe;
+//         this.weight = weight;
+//     }
     
-    @Field(type => Number, {nullable: true})
-    reps: number;
+//     @Field(type => Number, {nullable: true})
+//     reps: number;
 
-    @Field(type => Number, {nullable: true})
-    rpe: number;
+//     @Field(type => Number, {nullable: true})
+//     rpe: number;
 
-    @Field(type => Number, {nullable: true})
-    weight: number;
-}
+//     @Field(type => Number, {nullable: true})
+//     weight: number;
+// }
+
 
 export class WorkoutTemplateExerciseSetTransformer {
 

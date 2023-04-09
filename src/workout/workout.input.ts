@@ -4,19 +4,19 @@ import { Workout, WorkoutBase } from "./workout.interfaces";
 import { WorkoutExerciseInput } from "../workout-exercise/workout-exercise.input";
 
 
-@InputType()
+@InputType('workoutInput')
 export class WorkoutInput implements WorkoutBase, ModelInputWithId<Workout>{
     
     @Field(type => ID, {nullable: true})
     _id?: string;
     
-    @Field(type => ID)
-    authorId: string;
+    @Field(type => ID, {nullable: true})
+    authorId?: string;
     
     @Field({nullable: true})
     title?: string;
     
     @Field(type => [WorkoutExerciseInput], {nullable: "itemsAndList"})
-    exercises: WorkoutExerciseInput[];
+    exercises?: WorkoutExerciseInput[];
 
 }

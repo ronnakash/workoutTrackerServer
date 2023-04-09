@@ -1,7 +1,7 @@
 import { Exercise, ExerciseBase } from "../exercise/exercise.interfaces";
 import { WorkoutTemplate, WorkoutTemplateBase } from "../workout-template/workout-template.interfaces";
 import { ModelBase } from "../models/models.interfaces";
-import { WorkoutTemplateExerciseSet } from "./workout-template-exercise.input";
+import { WorkoutTemplateExerciseSet } from "./workout-template-exercise.type";
 
 export interface WorkoutTemplateExerciseBase  {
     exercise: ExerciseBase;

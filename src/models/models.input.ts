@@ -6,8 +6,8 @@ export interface ModelInput<M extends ModelBase> {
   
 }
 
-@InputType()
-export class ModelInputWithId<M extends ModelBaseWithId> implements ModelInput<M> {
+@InputType({isAbstract: true})
+export abstract class ModelInputWithId<M extends ModelBaseWithId> implements ModelInput<M> {
     
     // @Field(type=> ID)
     // _id: string;

@@ -5,7 +5,7 @@ import { UserInput } from "../user/user.interfaces";
 import { WorkoutTemplateExerciseInput } from "../workout-template-exercise/workout-template-exercise.input";
 
 
-@InputType()
+@InputType('workoutTemplateInput')
 export class WorkoutTemplateInput 
         implements WorkoutTemplateBase, ModelInput<WorkoutTemplate>{
     

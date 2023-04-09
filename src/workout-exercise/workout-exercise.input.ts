@@ -5,15 +5,15 @@ import { WorkoutInput } from "../workout/workout.input";
 import { WorkoutExercise, WorkoutExerciseBase } from "./workout-exercise.interfaces";
 import { WorkoutExerciseSetInput } from "../workout_exercise_set/workout-exercise-set.input";
 
-@InputType()
+@InputType('workoutExerciseInput')
 export class WorkoutExerciseInput implements WorkoutExerciseBase, ModelInput<WorkoutExercise>{
     @Field({nullable: true})
-    exercise: ExerciseInput;
+    exercise?: ExerciseInput;
     
-    @Field(type => [WorkoutInput])
-    workout: WorkoutInput;
+    @Field(type => [WorkoutInput], {nullable: true})
+    workout?: WorkoutInput;
     
-    @Field(type => [WorkoutExerciseSetInput])
-    sets: WorkoutExerciseSetInput[];
+    @Field(type => [WorkoutExerciseSetInput], {nullable: true})
+    sets?: WorkoutExerciseSetInput[];
 
 }
