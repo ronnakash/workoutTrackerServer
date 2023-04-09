@@ -2,7 +2,7 @@ import { Args, Context, Mutation, Parent, Query, ResolveField, Resolver } from '
 import { WorkoutType } from './workout.type';
 import { WorkoutExerciseType } from '../workout-exercise/workout-exercise.type';
 import { ModelsResolver, ModelsResolverWithId } from '../models/models.resolver';
-import { Workout, WorkoutInput } from './workout.interfaces';
+import { Workout } from './workout.interfaces';
 import { WorkoutService } from './workout.service';
 import { ExerciseType } from '../exercise/exercise.type';
 import { UseGuards, UseInterceptors } from '@nestjs/common';
@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { WorkoutExerciseService } from '../workout-exercise/workout-exercise.service';
 import { ExistsJWTInterceptor, GetJWTInterceptor, ValidateAdminTokenInterceptor, ValidateUserOrAdminInterceptor } from '../interceptors/interceptor.functions';
 import { User } from 'src/user/user.interfaces';
+import { WorkoutInput } from './workout.input';
 
 @Resolver(of => WorkoutType)
 // @UseInterceptors(GetJWTInterceptor, ExistsJWTInterceptor, ValidateUserOrAdminInterceptor)

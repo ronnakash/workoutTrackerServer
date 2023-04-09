@@ -1,8 +1,9 @@
 import { Resolver } from '@nestjs/graphql';
-import { ModelBase, ModelBaseWithId, ModelInput } from './models.interfaces';
+import { ModelBase, ModelBaseWithId } from './models.interfaces';
 import { ModelEntity, ModelEntityWithId } from './models.entity';
 import { IModelService, IModelServiceWithId, ModelServiceWithId } from './models.service';
 import { ModelType } from './models.type';
+import { ModelInput } from './models.input';
 
 @Resolver()
 export abstract class ModelsResolver<M extends ModelBase, E extends ModelEntity<M>> {

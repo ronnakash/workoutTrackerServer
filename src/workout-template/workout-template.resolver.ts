@@ -8,8 +8,9 @@ import { WorkoutExerciseService } from '../workout-exercise/workout-exercise.ser
 import { ExistsJWTInterceptor, GetJWTInterceptor, ValidateAdminTokenInterceptor, ValidateUserOrAdminInterceptor } from '../interceptors/interceptor.functions';
 import { WorkoutTemplateType } from './workout-template.type';
 import { WorkoutTemplateEntity } from './workout-template.entity';
-import { WorkoutTemplate, WorkoutTemplateInput } from './workout-template.interfaces';
+import { WorkoutTemplate } from './workout-template.interfaces';
 import { WorkoutTemplateService } from './workout-template.service';
+import { WorkoutTemplateInput } from './workout-template.input';
 
 @Resolver(of => WorkoutTemplateType)
 // @UseInterceptors(GetJWTInterceptor, ExistsJWTInterceptor, ValidateUserOrAdminInterceptor)

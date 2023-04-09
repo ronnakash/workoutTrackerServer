@@ -1,3 +1,4 @@
+
 export interface ModelBase {
 }
 
@@ -17,10 +18,3 @@ export interface IPaginatedModel<T extends ModelBase> {
     hasNextPage: boolean;
 }
 
-export interface ModelInput<M extends ModelBase> {
-  
-}
-
-export interface ModelInputWithId<M extends ModelBaseWithId> {
-  
-}

@@ -1,8 +1,9 @@
 import { ObjectType, Field, ID } from "@nestjs/graphql";
 import { ModelType } from "../models/models.type";
 import { ExerciseType } from "../exercise/exercise.type";
-import { WorkoutTemplateExercise, WorkoutTemplateExerciseSet } from "./workout-template-exercise.interfaces";
+import { WorkoutTemplateExercise } from "./workout-template-exercise.interfaces";
 import { WorkoutTemplateExerciseEntity } from "./workout-template-exercise.entity";
+import { WorkoutTemplateExerciseSet } from "./workout-template-exercise.input";
 
 @ObjectType('WorkoutTemplateExercise')
 export class WorkoutTemplateExerciseType extends ModelType<WorkoutTemplateExercise> {

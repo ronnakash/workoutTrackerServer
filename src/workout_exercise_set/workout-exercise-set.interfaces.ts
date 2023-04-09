@@ -1,6 +1,7 @@
 import { Field, InputType } from "@nestjs/graphql";
 import { Exercise } from "../exercise/exercise.interfaces";
-import { ModelBase, ModelInput } from "../models/models.interfaces";
+import { ModelBase } from "../models/models.interfaces";
+import { ModelInput } from "../models/models.input";
 
 export interface WorkoutExerciseSet extends ModelBase {
     setNumber: number

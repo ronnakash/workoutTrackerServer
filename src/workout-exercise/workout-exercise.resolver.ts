@@ -1,12 +1,13 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { WorkoutExerciseType } from './workout-exercise.type';
 import { ModelsResolver } from '../models/models.resolver';
-import { WorkoutExercise, WorkoutExerciseInput } from './workout-exercise.interfaces';
+import { WorkoutExercise } from './workout-exercise.interfaces';
 import { WorkoutExerciseService } from './workout-exercise.service';
 import { WorkoutType } from '../workout/workout.type';
 import { WorkoutExerciseEntity } from './workout-exercise.entity';
 import { ExerciseService } from '../exercise/exercise.service';
 import { ExerciseType } from 'src/exercise/exercise.type';
+import { WorkoutExerciseInput } from './workout-exercise.input';
 
 @Resolver()
 export class WorkoutExerciseResolver extends ModelsResolver<WorkoutExercise, WorkoutExerciseEntity> {
