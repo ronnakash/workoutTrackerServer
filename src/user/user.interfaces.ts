@@ -1,9 +1,17 @@
 import { JwtPayload } from 'jsonwebtoken';
 import { ModelBase, ModelBaseWithId } from '../models/models.interfaces';
+import { Field, InputType } from '@nestjs/graphql';
 
 //interface to pass params to User constructor
 
-export interface UserLoginProps {
+export interface UserBase {
+    username?: string;
+    email? : string;
+    password?: string;
+}
+
+
+export interface UserLoginProps extends UserBase{
     username: string;
     email : string;
     password?: string;
@@ -43,3 +51,17 @@ export interface UserWithPassword extends User{
 }
 
 
+@InputType()
+export class UserInput implements UserLoginProps{
+    
+    @Field()
+    username: string;
+    
+    @Field()
+    email: string;
+    
+    @Field()
+    password?: string;
+    
+
+}

@@ -1,4 +1,4 @@
-import { Context, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Args, Context, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { WorkoutExerciseType } from '../workout-exercise/workout-exercise.type';
 import { ModelsResolver, ModelsResolverWithId } from '../models/models.resolver';
 import { ExerciseType } from '../exercise/exercise.type';
@@ -8,7 +8,7 @@ import { WorkoutExerciseService } from '../workout-exercise/workout-exercise.ser
 import { ExistsJWTInterceptor, GetJWTInterceptor, ValidateAdminTokenInterceptor, ValidateUserOrAdminInterceptor } from '../interceptors/interceptor.functions';
 import { WorkoutTemplateType } from './workout-template.type';
 import { WorkoutTemplateEntity } from './workout-template.entity';
-import { WorkoutTemplate } from './workout-template.interfaces';
+import { WorkoutTemplate, WorkoutTemplateInput } from './workout-template.interfaces';
 import { WorkoutTemplateService } from './workout-template.service';
 
 @Resolver(of => WorkoutTemplateType)
@@ -34,5 +34,10 @@ export class WorkoutTemplateResolver extends ModelsResolverWithId<WorkoutTemplat
         return res1;
     }
     
-
+    @Mutation(() => WorkoutTemplateType)
+    async createWorkoutTemplate(
+      @Args('exercise') exercise: WorkoutTemplateInput,
+    ): Promise<WorkoutTemplateType> {
+        return (await super.create(exercise)).toType() as WorkoutTemplateType;
+    }
 }

@@ -20,3 +20,7 @@ export interface IPaginatedModel<T extends ModelBase> {
 export interface ModelInput<M extends ModelBase> {
   
 }
+
+export interface ModelInputWithId<M extends ModelBaseWithId> {
+  
+}
