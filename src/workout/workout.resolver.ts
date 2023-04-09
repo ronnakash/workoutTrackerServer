@@ -44,5 +44,11 @@ export class WorkoutResolver extends ModelsResolverWithId<Workout, WorkoutEntity
     ): Promise<WorkoutType> {
         return (await super.create(workout)).toType() as WorkoutType;
     }
-    
+
+    @Mutation(() => WorkoutType)
+    async updateWorkout(
+      @Args('workout') workout: WorkoutInput,
+    ): Promise<WorkoutType> {
+        return (await super.create(workout)).toType() as WorkoutType;
+    }
 }

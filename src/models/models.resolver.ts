@@ -24,8 +24,8 @@ export abstract class ModelsResolver<M extends ModelBase, E extends ModelEntity<
     }
 
     async update(input : ModelInput<M>) : Promise<E> {
-        const newEntity = this.service.newEntity(input); 
-        return newEntity;
+        const newEntity = await this.service.updateModel(input as M); 
+        return newEntity.toType() as E;
     }
 
 
