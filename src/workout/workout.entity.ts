@@ -21,14 +21,20 @@ export class WorkoutEntity extends ModelEntityWithId<Workout> {
         }
     }
 
-    @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout)
+    @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout, 
+            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'})
     exercises: WorkoutExerciseEntity[];
  
     @ManyToOne(() => UserEntity, user => user.workouts, { lazy: true })
     @JoinColumn()
     author: UserEntity;
 
-    @ManyToOne(() => WorkoutTemplateEntity, { lazy: true })
+    @ManyToOne(() => WorkoutTemplateEntity, 
+            { 
+                // lazy: true,
+                onDelete: 'CASCADE',  onUpdate: 'CASCADE',
+                cascade: ["insert", "update", "soft-remove"],
+            })
     @JoinColumn()
     template: WorkoutTemplateEntity;
 

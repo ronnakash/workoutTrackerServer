@@ -19,18 +19,21 @@ export class WorkoutExerciseEntity extends ModelEntity<WorkoutExercise>{
         }
     }
 
-    @ManyToOne(() => WorkoutEntity, workout => workout.exercises)
+    @ManyToOne(() => WorkoutEntity, workout => workout.exercises,
+            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'})
     @JoinColumn({ name: 'workout' })
     @PrimaryColumn('uuid')
     workout: WorkoutEntity;
   
-    @ManyToOne(() => ExerciseEntity, exercise => exercise.exercises,)
+    @ManyToOne(() => ExerciseEntity, exercise => exercise.exercises,
+            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'})
     @JoinColumn({ name: 'exercise' })
     @PrimaryColumn('uuid')
     exercise: ExerciseEntity;
 
 
-    @OneToMany(() => WorkoutExerciseSetEntity, set => set.workoutExercise)
+    @OneToMany(() => WorkoutExerciseSetEntity, set => set.workoutExercise,
+            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'})
     sets: WorkoutExerciseSetEntity[];
 
     toType(): ModelType<WorkoutExercise> {

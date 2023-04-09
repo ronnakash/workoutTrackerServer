@@ -13,7 +13,9 @@ export class WorkoutExerciseSetEntity extends ModelEntity<WorkoutExerciseSet> {
     }
 
     // @JoinColumn({ name: "workoutExercise", referencedColumnName: "_id" })
-    @ManyToOne(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.sets)
+    @ManyToOne(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.sets, 
+            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'})
+
     @PrimaryColumn('uuid')
     workoutExercise: WorkoutExerciseEntity;
 

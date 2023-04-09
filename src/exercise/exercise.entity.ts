@@ -35,7 +35,8 @@ export class ExerciseEntity extends ModelEntityWithId<Exercise> implements Exerc
     @Column({ type: 'json', array: false, nullable: true })
     musclesWorked: WeightedMuscle[];
 
-    @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout)
+    @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout, 
+            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'} )
     exercises: WorkoutExerciseEntity[];
 
 

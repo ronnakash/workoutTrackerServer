@@ -22,12 +22,14 @@ export class WorkoutTemplateExerciseEntity extends ModelEntity<WorkoutTemplateEx
     }
 
 
-    @ManyToOne(() => WorkoutTemplateEntity, workoutTemplate => workoutTemplate.exercises)
+    @ManyToOne(() => WorkoutTemplateEntity, workoutTemplate => workoutTemplate.exercises,
+            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'})
     @JoinColumn({ name: 'workout' })
     @PrimaryColumn('uuid')
     workout: WorkoutTemplateEntity;
   
-    @ManyToOne(() => ExerciseEntity, exercise => exercise.exercises,)
+    @ManyToOne(() => ExerciseEntity, exercise => exercise.exercises,
+            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'})
     @JoinColumn({ name: 'exercise' })
     @PrimaryColumn('uuid')
     exercise: ExerciseEntity;
