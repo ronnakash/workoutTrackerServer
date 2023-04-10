@@ -9,6 +9,7 @@ import { WorkoutTemplateExercise } from "./workout-template-exercise.interfaces"
 import { WorkoutTemplateEntity } from "../workout-template/workout-template.entity";
 import { WorkoutTemplateExerciseSet, WorkoutTemplateExerciseType } from "./workout-template-exercise.type";
 import { WorkoutTemplateExerciseSetTransformer } from "./workout-template-exercise.input";
+import { deepPrint } from "../util/deepPrint";
 
 @Entity('workout_template_exercise', { name: 'postgres' })
 export class WorkoutTemplateExerciseEntity extends ModelEntity<WorkoutTemplateExercise>{
@@ -24,13 +25,13 @@ export class WorkoutTemplateExerciseEntity extends ModelEntity<WorkoutTemplateEx
 
 
     @ManyToOne(() => WorkoutTemplateEntity, workoutTemplate => workoutTemplate.exercises,
-            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'})
+            { onUpdate: 'CASCADE', cascade: [/*"insert"*/, "update", "soft-remove"], onDelete: 'CASCADE'})
     @JoinColumn({ name: 'workout' })
     @PrimaryColumn('uuid')
     workout: WorkoutTemplateEntity;
   
     @ManyToOne(() => ExerciseEntity, exercise => exercise.exercises,
-            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'})
+            { onUpdate: 'CASCADE', cascade: [/*"insert"*/, "update", "soft-remove"], onDelete: 'CASCADE'})
     @JoinColumn({ name: 'exercise' })
     @PrimaryColumn('uuid')
     exercise: ExerciseEntity;

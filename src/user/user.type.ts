@@ -3,6 +3,7 @@ import { ModelType, ModelTypeWithId } from "../models/models.type";
 import { User } from "./user.interfaces";
 import { UserEntity } from "./user.entity";
 import { PrimaryGeneratedColumn } from "typeorm";
+import { deepPrint } from "../util/deepPrint";
 
 @ObjectType('User')
 export class UserType extends ModelTypeWithId<User> {
@@ -13,6 +14,8 @@ export class UserType extends ModelTypeWithId<User> {
 
     constructor(user : User | UserEntity) {
         super();
+        console.log("UserType ");
+        // deepPrint(user);
         this._id = user._id;
         this.username = user.username;
         this.email = user.email;

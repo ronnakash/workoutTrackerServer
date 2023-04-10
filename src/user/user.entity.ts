@@ -4,6 +4,7 @@ import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { ModelType } from "../models/models.type";
 import { UserType } from "./user.type";
 import { WorkoutEntity } from "../workout/workout.entity";
+import { deepPrint } from "../util/deepPrint";
 
 @Entity('app_user', { name: 'postgres' })
 export class UserEntity extends ModelEntityWithId<User> {    
@@ -11,6 +12,8 @@ export class UserEntity extends ModelEntityWithId<User> {
     public constructor(model? : User) {
         super();
         if (model){
+            console.log("UserEntity ");
+            deepPrint(model);    
             this.email = model.email;
             this.username = model.username;
             this.password = model.password;

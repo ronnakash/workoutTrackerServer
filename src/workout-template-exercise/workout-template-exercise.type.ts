@@ -3,6 +3,7 @@ import { ModelType } from "../models/models.type";
 import { ExerciseType } from "../exercise/exercise.type";
 import { WorkoutTemplateExercise, WorkoutTemplateExerciseSetBase } from "./workout-template-exercise.interfaces";
 import { WorkoutTemplateExerciseEntity } from "./workout-template-exercise.entity";
+import { deepPrint } from "../util/deepPrint";
 
 @ObjectType('WorkoutTemplateExercise')
 export class WorkoutTemplateExerciseType extends ModelType<WorkoutTemplateExercise> {
@@ -13,6 +14,8 @@ export class WorkoutTemplateExerciseType extends ModelType<WorkoutTemplateExerci
 
     constructor(workoutExercise: WorkoutTemplateExerciseEntity | WorkoutTemplateExercise) {
         super();
+        console.log("WorkoutTemplateExerciseType ");
+        deepPrint(workoutExercise);        
         this.exercise = new ExerciseType(workoutExercise.exercise);
         this.sets = workoutExercise.sets;    
     }

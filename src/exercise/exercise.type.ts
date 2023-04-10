@@ -3,6 +3,7 @@ import { Exercise, Muscle, WeightedMuscle } from "./exercise.interfaces";
 import { ExerciseEntity } from "./exercise.entity";
 import { ModelType, ModelTypeWithId } from "../models/models.type";
 import { PrimaryGeneratedColumn } from "typeorm";
+import { deepPrint } from "../util/deepPrint";
 
 @ObjectType('Exercise')
 export class ExerciseType extends ModelTypeWithId<Exercise> {
@@ -13,6 +14,8 @@ export class ExerciseType extends ModelTypeWithId<Exercise> {
 
     constructor(exercise : Exercise | ExerciseEntity) {
         super();
+        console.log("ExerciseType ");
+        deepPrint(exercise);
         this._id = exercise._id;
         this.name = exercise.name;
         this.musclesWorked = exercise.musclesWorked;

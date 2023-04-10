@@ -7,6 +7,7 @@ import { WorkoutExerciseSetType } from "../workout_exercise_set/workout-exercise
 import { WorkoutExerciseSet } from "../workout_exercise_set/workout-exercise-set.interfaces";
 import { WorkoutExerciseSetEntity } from "../workout_exercise_set/workout-exercise-set.entity";
 import { WorkoutType } from "../workout/workout.type";
+import { deepPrint } from "../util/deepPrint";
 
 @ObjectType('WorkoutExcercise')
 export class WorkoutExerciseType extends ModelType<WorkoutExercise> implements WorkoutExercise {
@@ -17,6 +18,8 @@ export class WorkoutExerciseType extends ModelType<WorkoutExercise> implements W
 
     constructor(workoutExercise: WorkoutExerciseEntity | WorkoutExercise) {
         super();
+        console.log("WorkoutExerciseType ");
+        // deepPrint(workoutExercise);
         this.exercise = new ExerciseType(workoutExercise.exercise);
         this.sets = workoutExercise.sets.map((e : WorkoutExerciseSetEntity | WorkoutExerciseSet) => new WorkoutExerciseSetType(e));    
 

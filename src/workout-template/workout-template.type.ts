@@ -4,6 +4,7 @@ import { WorkoutTemplateEntity } from "./workout-template.entity";
 import { WorkoutTemplate } from "./workout-template.interfaces";
 import { OneToMany } from "typeorm";
 import { WorkoutEntity } from "../workout/workout.entity";
+import { deepPrint } from "../util/deepPrint";
 
 @ObjectType('WorkoutTemplate')
 export class WorkoutTemplateType extends ModelTypeWithId<WorkoutTemplate> {
@@ -13,6 +14,8 @@ export class WorkoutTemplateType extends ModelTypeWithId<WorkoutTemplate> {
 
     constructor(workout: WorkoutTemplate | WorkoutTemplateEntity) {
         super();
+        console.log("WorkoutTemplateType ");
+        deepPrint(workout);    
         this._id = workout._id;
         this.title = workout.title;
         // workout.exercises.forEach(e => console.log(e));

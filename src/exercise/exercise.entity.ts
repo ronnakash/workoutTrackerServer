@@ -6,6 +6,7 @@ import { ExerciseType } from "./exercise.type";
 import { isNullableType } from "graphql";
 import { WorkoutEntity } from "../workout/workout.entity";
 import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.entity";
+import { deepPrint } from "../util/deepPrint";
 
 @Entity('exercise', { name: 'postgres' })
 export class ExerciseEntity extends ModelEntityWithId<Exercise> implements Exercise {
@@ -14,6 +15,9 @@ export class ExerciseEntity extends ModelEntityWithId<Exercise> implements Exerc
     public constructor(model? : Partial<Exercise>) {
         super();
         if (model){
+            console.log("ExerciseEntity ");
+            // deepPrint(model);
+            this._id = model._id;
             this.name = model.name;
             this.workload = model.workload;
             this.musclesWorked = model.musclesWorked;
@@ -36,7 +40,7 @@ export class ExerciseEntity extends ModelEntityWithId<Exercise> implements Exerc
     musclesWorked: WeightedMuscle[];
 
     @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout, 
-            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'} )
+            { onUpdate: 'CASCADE', cascade: [/*"insert"*/, "update", "soft-remove"], onDelete: 'CASCADE'} )
     exercises: WorkoutExerciseEntity[];
 
 

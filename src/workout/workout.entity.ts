@@ -8,6 +8,7 @@ import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.enti
 import { ExerciseEntity } from "../exercise/exercise.entity";
 import { UserEntity } from "../user/user.entity";
 import { WorkoutTemplateEntity } from "../workout-template/workout-template.entity";
+import { deepPrint } from "../util/deepPrint";
 
 @Entity('workout', { name: 'postgres' })
 export class WorkoutEntity extends ModelEntityWithId<Workout> {
@@ -15,6 +16,8 @@ export class WorkoutEntity extends ModelEntityWithId<Workout> {
     public constructor(model? : Partial<Workout>) {
         super();
         if(model){
+            console.log("WorkoutEntity ");
+            deepPrint(model);
             this._id = model._id;
             this.exercises = model.exercises.map(e => new WorkoutExerciseEntity(e));
             this.author = new UserEntity(model.author);
@@ -22,7 +25,7 @@ export class WorkoutEntity extends ModelEntityWithId<Workout> {
     }
 
     @OneToMany(() => WorkoutExerciseEntity, workoutExercise => workoutExercise.workout, 
-            { onUpdate: 'CASCADE', cascade: ["insert", "update", "soft-remove"], onDelete: 'CASCADE'})
+            { onUpdate: 'CASCADE', cascade: [/*"insert"*/, "update", "soft-remove"], onDelete: 'CASCADE'})
     exercises: WorkoutExerciseEntity[];
  
     @ManyToOne(() => UserEntity, user => user.workouts, { lazy: true })
