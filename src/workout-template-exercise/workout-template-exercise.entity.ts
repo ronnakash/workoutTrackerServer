@@ -4,7 +4,6 @@ import { ModelEntity } from "../models/models.entity";
 import { ModelType } from "../models/models.type";
 import { WorkoutEntity } from "../workout/workout.entity";
 import { ExerciseEntity } from "../exercise/exercise.entity";
-import { WorkoutExerciseSetEntity } from "../workout_exercise_set/workout-exercise-set.entity";
 import { WorkoutTemplateExercise } from "./workout-template-exercise.interfaces";
 import { WorkoutTemplateEntity } from "../workout-template/workout-template.entity";
 import { WorkoutTemplateExerciseSet, WorkoutTemplateExerciseType } from "./workout-template-exercise.type";

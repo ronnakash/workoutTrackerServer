@@ -1,12 +1,11 @@
 import { ObjectType, Field, ID } from "@nestjs/graphql";
-import { ModelType, ModelTypeWithId } from "../models/models.type";
+import { ModelTypeWithId } from "../models/models.type";
 import { Workout } from "./workout.interfaces";
 import { WorkoutExerciseType } from "../workout-exercise/workout-exercise.type";
 import { WorkoutEntity } from "./workout.entity";
 import { WorkoutExerciseEntity } from "../workout-exercise/workout-exercise.entity";
 import { WorkoutExercise } from "../workout-exercise/workout-exercise.interfaces";
 import { UserType } from "../user/user.type";
-import { PrimaryGeneratedColumn } from "typeorm";
 import { deepPrint } from "../util/deepPrint";
 
 @ObjectType('Workout')

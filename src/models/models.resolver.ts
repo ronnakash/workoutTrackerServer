@@ -20,7 +20,13 @@ export abstract class ModelsResolver<M extends ModelBase, E extends ModelEntity<
     }
 
     async create(input : ModelInput<M>) : Promise<E> {
+        console.log("\n input: \n")
+        console.log(input)
+        console.log("")
         const newEntity = this.service.newEntity(input); 
+        console.log("\n entity: \n")
+        console.log(newEntity)
+        console.log("")
         return newEntity;
     }
 
